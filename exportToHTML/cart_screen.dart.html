@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>cart_screen.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #067d17;}
+.s2 { color: #0033b3;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+cart_screen.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s0">;</span>
+
+
+<span class="s2">class </span><span class="s0">CartScreen </span><span class="s2">extends </span><span class="s0">StatelessWidget {</span>
+  <span class="s2">const </span><span class="s0">CartScreen({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return const </span><span class="s0">MaterialApp(</span>
+      <span class="s0">home: CartScreenState(),</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">CartScreenState </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s2">const </span><span class="s0">CartScreenState({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_CartScreenStateState createState() =&gt; _CartScreenStateState();</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_CartScreenStateState </span><span class="s2">extends </span><span class="s0">State&lt;CartScreenState&gt; {</span>
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return </span><span class="s0">Scaffold(</span>
+      <span class="s0">appBar: AppBar(</span>
+        <span class="s0">title: </span><span class="s2">const </span><span class="s0">Text(</span><span class="s1">&quot;Cart Screen&quot;</span><span class="s0">),</span>
+      <span class="s0">),</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>admin_homepage.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #067d17;}
+.s2 { color: #0033b3;}
+.s3 { color: #1750eb;}
+.s4 { color: #8c8c8c; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+admin_homepage.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:animated_splash_screen/animated_splash_screen.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/LoginPage.dart'</span><span class="s0">;</span>
+
+
+
+<span class="s2">class </span><span class="s0">AdminPage </span><span class="s2">extends </span><span class="s0">StatelessWidget {</span>
+  <span class="s2">const </span><span class="s0">AdminPage({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return </span><span class="s0">AnimatedSplashScreen(</span>
+      <span class="s0">splash: Column(</span>
+        <span class="s0">children: [</span>
+
+          <span class="s0">Image.asset(</span><span class="s1">&quot;assets/loader.gif&quot;</span><span class="s0">, height: </span><span class="s3">200</span><span class="s0">, width: </span><span class="s3">500</span><span class="s0">,),</span>
+          <span class="s2">const </span><span class="s0">Text(</span><span class="s1">&quot;ZETA FASHION&quot;</span><span class="s0">, style: TextStyle(fontSize: </span><span class="s3">20</span><span class="s0">, fontWeight: FontWeight.bold, color: Colors.white)),</span>
+        <span class="s0">],</span>
+      <span class="s0">),</span>
+      <span class="s0">nextScreen: </span><span class="s2">const </span><span class="s0">AdminScreenState(),</span>
+      <span class="s0">splashIconSize: </span><span class="s3">250</span><span class="s0">,</span>
+      <span class="s0">duration: </span><span class="s3">4000</span><span class="s0">,</span>
+      <span class="s0">splashTransition: SplashTransition.fadeTransition,</span>
+      <span class="s0">backgroundColor: Colors.black,</span>
+      <span class="s4">// pageTransitionType: PageTransitionType.bottomToTop,</span>
+      <span class="s0">animationDuration: </span><span class="s2">const </span><span class="s0">Duration(seconds: </span><span class="s3">1</span><span class="s0">),);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+<span class="s2">class </span><span class="s0">AdminScreenState </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s2">const </span><span class="s0">AdminScreenState({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_AdminScreenState createState() =&gt; _AdminScreenState();</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_AdminScreenState </span><span class="s2">extends </span><span class="s0">State&lt;AdminScreenState&gt; {</span>
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return </span><span class="s0">Scaffold(</span>
+      <span class="s0">backgroundColor: Colors.black,</span>
+      <span class="s0">appBar: AppBar(</span>
+        <span class="s0">backgroundColor: Colors.black,</span>
+        <span class="s0">title: Text(</span><span class="s1">&quot;Admin Screen&quot; </span><span class="s0">, style: TextStyle(fontSize: </span><span class="s3">18</span><span class="s0">, fontWeight: FontWeight.bold, color: Colors.white),),</span>
+        <span class="s0">centerTitle: </span><span class="s2">true</span><span class="s0">,</span>
+        <span class="s0">actions: &lt;Widget&gt;[</span>
+          <span class="s0">IconButton(</span>
+            <span class="s0">onPressed: () =&gt; {Navigator.push(context, MaterialPageRoute(builder: (context) =&gt; ZetaFashion()))},</span>
+            <span class="s0">icon: </span><span class="s2">const </span><span class="s0">Icon(</span>
+              <span class="s0">Icons.login_outlined,</span>
+              <span class="s0">color: Colors.white,</span>
+            <span class="s0">),</span>
+          <span class="s0">),</span>
+
+        <span class="s0">],</span>
+      <span class="s0">),</span>
+      <span class="s0">drawer: Drawer(</span>
+
+      <span class="s0">),</span>
+
+
+      <span class="s0">body: Stack(</span>
+        <span class="s0">children: [</span>
+          <span class="s0">Column(</span>
+            <span class="s0">mainAxisAlignment: MainAxisAlignment.spaceEvenly,</span>
+            <span class="s0">children: [</span>
+              <span class="s0">Center(</span>
+                <span class="s0">child:ElevatedButton(</span>
+                    <span class="s0">onPressed: (){},</span>
+                    <span class="s0">style: ElevatedButton.styleFrom(</span>
+                      <span class="s0">primary: Color(</span><span class="s3">0xFFEFD47E</span><span class="s0">),</span>
+                      <span class="s0">elevation: </span><span class="s3">3</span><span class="s0">,</span>
+                      <span class="s0">shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(</span><span class="s3">10.0</span><span class="s0">),),</span>
+                      <span class="s0">minimumSize: Size(</span><span class="s3">200</span><span class="s0">, </span><span class="s3">70</span><span class="s0">),</span>
+                    <span class="s0">),</span>
+                    <span class="s0">child: Text(</span><span class="s1">&quot;Add Products&quot;</span><span class="s0">, style: TextStyle(fontSize: </span><span class="s3">20</span><span class="s0">, color: Colors.black, fontWeight: FontWeight.w600),)),</span>
+              <span class="s0">),</span>
+              <span class="s0">Center(</span>
+                <span class="s0">child:ElevatedButton(</span>
+                    <span class="s0">onPressed: (){},</span>
+                    <span class="s0">style: ElevatedButton.styleFrom(</span>
+                      <span class="s0">primary: Color(</span><span class="s3">0xFFEFD47E</span><span class="s0">),</span>
+                      <span class="s0">elevation: </span><span class="s3">3</span><span class="s0">,</span>
+                      <span class="s0">shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(</span><span class="s3">10.0</span><span class="s0">)),</span>
+                      <span class="s0">minimumSize: Size(</span><span class="s3">200</span><span class="s0">, </span><span class="s3">70</span><span class="s0">),</span>
+                    <span class="s0">),</span>
+                    <span class="s0">child: Text(</span><span class="s1">&quot;Edit Products&quot;</span><span class="s0">, style: TextStyle(fontSize: </span><span class="s3">20</span><span class="s0">, color: Colors.black, fontWeight: FontWeight.w600),)),</span>
+              <span class="s0">),</span>
+              <span class="s0">Center(</span>
+                <span class="s0">child:ElevatedButton(</span>
+                    <span class="s0">onPressed: (){},</span>
+                    <span class="s0">style: ElevatedButton.styleFrom(</span>
+                  <span class="s0">primary: Color(</span><span class="s3">0xFFEFD47E</span><span class="s0">),</span>
+                  <span class="s0">elevation: </span><span class="s3">3</span><span class="s0">,</span>
+                  <span class="s0">shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(</span><span class="s3">10.0</span><span class="s0">)),</span>
+                  <span class="s0">minimumSize: Size(</span><span class="s3">200</span><span class="s0">, </span><span class="s3">70</span><span class="s0">),</span>
+                <span class="s0">),child: Text(</span><span class="s1">&quot;Remove Products&quot;</span><span class="s0">, style: TextStyle(fontSize: </span><span class="s3">20</span><span class="s0">, color: Colors.black, fontWeight: FontWeight.w600),)),</span>
+              <span class="s0">)</span>
+            <span class="s0">],</span>
+          <span class="s0">)</span>
+        <span class="s0">],</span>
+      <span class="s0">),</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>

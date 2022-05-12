@@ -1,0 +1,197 @@
+<html>
+<head>
+<title>product_list.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #067d17;}
+.s2 { color: #0033b3;}
+.s3 { color: #8c8c8c; font-style: italic;}
+.s4 { color: #1750eb;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+product_list.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/home_page.dart'</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">'productScreen.dart'</span><span class="s0">;</span>
+
+
+
+<span class="s2">class </span><span class="s0">MenFashion </span><span class="s2">extends </span><span class="s0">StatelessWidget {</span>
+   <span class="s0">MenFashion({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return  </span><span class="s0">MaterialApp(</span>
+      <span class="s0">home: MenFashionState(),</span>
+      <span class="s0">debugShowCheckedModeBanner: </span><span class="s2">false</span><span class="s0">,</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">MenFashionState </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+   <span class="s0">MenFashionState({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_MenFashionStateState createState() =&gt; _MenFashionStateState();</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_MenFashionStateState </span><span class="s2">extends </span><span class="s0">State&lt;MenFashionState&gt; {</span>
+
+  <span class="s3">// ignore: non_ant_identifier_names</span>
+  <span class="s2">final </span><span class="s0">List&lt;Map&gt; ImageList = [</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Product 1&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/men.jpg&quot;</span><span class="s0">,},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Product 2&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/men.jpg&quot;</span><span class="s0">},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Product 3&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/men.jpg&quot;</span><span class="s0">},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Product 4&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/men.jpg&quot;</span><span class="s0">},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Product 5&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/men.jpg&quot;</span><span class="s0">},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Product 6&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/men.jpg&quot;</span><span class="s0">},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Product 7&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/men.jpg&quot;</span><span class="s0">},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Product 8&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/men.jpg&quot;</span><span class="s0">},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Product 9&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/men.jpg&quot;</span><span class="s0">},</span>
+  <span class="s0">];</span>
+
+
+  <span class="s0">Icon customIcon =  Icon(Icons.search);</span>
+  <span class="s0">Widget customSearchBar =  Text(</span><span class="s1">&quot;Mens Fashion&quot;</span><span class="s0">);</span>
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+
+    <span class="s2">return </span><span class="s0">Scaffold(</span>
+
+      <span class="s0">backgroundColor: Colors.black,</span>
+      <span class="s0">appBar: AppBar(</span>
+        <span class="s0">backgroundColor: Colors.black,</span>
+        <span class="s0">title: customSearchBar,</span>
+        <span class="s0">centerTitle: </span><span class="s2">true</span><span class="s0">,</span>
+        <span class="s0">leading: IconButton(</span>
+          <span class="s0">icon:  Icon(</span>
+          <span class="s0">Icons.arrow_back,</span>
+          <span class="s0">), onPressed: ()=&gt;</span>
+        <span class="s0">{</span>
+          <span class="s0">Navigator.push(context,</span>
+              <span class="s0">MaterialPageRoute(builder: (context) =&gt;  HomePage()))</span>
+        <span class="s0">},</span>
+        <span class="s0">),</span>
+        <span class="s0">actions: &lt;Widget&gt;[</span>
+          <span class="s0">IconButton(</span>
+              <span class="s0">onPressed: () =&gt;{</span>
+                <span class="s0">setState((){</span>
+                  <span class="s2">if</span><span class="s0">(customIcon.icon == Icons.search){</span>
+                    <span class="s0">customIcon =  Icon(Icons.cancel);</span>
+                    <span class="s0">customSearchBar =  TextField(</span>
+                      <span class="s0">textInputAction: TextInputAction.go,</span>
+                      <span class="s0">decoration: InputDecoration(</span>
+                        <span class="s0">border: InputBorder.none,</span>
+                        <span class="s0">hintText: </span><span class="s1">&quot;Search Products&quot;</span><span class="s0">,</span>
+                        <span class="s0">hintStyle:  TextStyle(color: Colors.white)</span>
+
+                      <span class="s0">),</span>
+                      <span class="s0">style:  TextStyle(</span>
+                        <span class="s0">color: Colors.white,</span>
+                        <span class="s0">fontSize: </span><span class="s4">16.0</span><span class="s0">,</span>
+                      <span class="s0">),</span>
+                    <span class="s0">);</span>
+                  <span class="s0">}</span>
+                  <span class="s2">else</span><span class="s0">{</span>
+                    <span class="s0">customIcon = Icon(Icons.search);</span>
+                    <span class="s0">customSearchBar = Text(</span><span class="s1">&quot;Mens Fashions&quot;</span><span class="s0">);</span>
+                  <span class="s0">}</span>
+                <span class="s0">})</span>
+              <span class="s0">},</span>
+              <span class="s0">icon: customIcon,</span>
+          <span class="s0">),</span>
+          <span class="s0">IconButton(onPressed: () =&gt; {</span>
+          <span class="s0">}, icon:  Icon(</span>
+            <span class="s0">Icons.filter_alt_outlined,</span>
+            <span class="s0">size: </span><span class="s4">25</span><span class="s0">,</span>
+          <span class="s0">),)</span>
+        <span class="s0">],</span>
+
+      <span class="s0">),</span>
+    <span class="s0">body: Stack(</span>
+      <span class="s0">children: &lt;Widget&gt;[</span>
+        <span class="s0">SingleChildScrollView(</span>
+          <span class="s0">child: Column(</span>
+            <span class="s0">children: &lt;Widget&gt;[</span>
+
+              <span class="s0">GridView.builder(</span>
+                <span class="s0">physics:  ClampingScrollPhysics(),</span>
+                <span class="s0">scrollDirection: Axis.vertical,</span>
+                <span class="s0">shrinkWrap: </span><span class="s2">true</span><span class="s0">,</span>
+                <span class="s0">itemCount: ImageList.length,</span>
+                <span class="s0">gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(</span>
+                  <span class="s0">childAspectRatio: </span><span class="s4">1</span><span class="s0">,</span>
+                  <span class="s0">crossAxisCount: </span><span class="s4">2</span><span class="s0">,</span>
+                  <span class="s0">crossAxisSpacing: </span><span class="s4">4.0</span><span class="s0">,</span>
+                  <span class="s0">mainAxisSpacing: </span><span class="s4">4.0</span><span class="s0">,</span>
+                <span class="s0">),</span>
+                <span class="s0">itemBuilder: (BuildContext context, int index) {</span>
+                  <span class="s2">return </span><span class="s0">Card(</span>
+                    <span class="s0">semanticContainer: </span><span class="s2">true</span><span class="s0">,</span>
+                    <span class="s0">color: Colors.white,</span>
+                    <span class="s0">elevation: </span><span class="s4">0.2</span><span class="s0">,</span>
+                    <span class="s0">shape: RoundedRectangleBorder(</span>
+                      <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s4">8.0</span><span class="s0">),</span>
+                    <span class="s0">),</span>
+                    <span class="s0">child: SizedBox(</span>
+                      <span class="s0">height: </span><span class="s4">300</span><span class="s0">,</span>
+                      <span class="s0">width: </span><span class="s4">200</span><span class="s0">,</span>
+                      <span class="s0">child: InkWell(</span>
+                        <span class="s0">child: Column(</span>
+                          <span class="s0">mainAxisAlignment: MainAxisAlignment.center,</span>
+                          <span class="s0">crossAxisAlignment: CrossAxisAlignment.center,</span>
+                          <span class="s0">children: &lt;Widget&gt;[</span>
+                            <span class="s0">InkWell(</span>
+                              <span class="s0">onTap: () =&gt; {</span>
+                                <span class="s0">Navigator.push(context,</span>
+                                    <span class="s0">MaterialPageRoute(builder: (context) =&gt;   ProductScreen()))</span>
+                              <span class="s0">},</span>
+                              <span class="s0">child: Padding(</span>
+                                <span class="s0">padding:  EdgeInsets.all(</span><span class="s4">15</span><span class="s0">),</span>
+                                <span class="s0">child: Image.asset(</span>
+                                  <span class="s0">ImageList[index][</span><span class="s1">'iconPath'</span><span class="s0">],</span>
+                                  <span class="s0">fit: BoxFit.cover,</span>
+                                  <span class="s0">alignment: Alignment.center,</span>
+                                  <span class="s0">height: </span><span class="s4">120</span><span class="s0">,</span>
+                                  <span class="s0">width: double.infinity,</span>
+                                <span class="s0">),</span>
+                              <span class="s0">),</span>
+                            <span class="s0">),</span>
+                             <span class="s0">SizedBox(height: </span><span class="s4">5</span><span class="s0">),</span>
+                            <span class="s0">Text(</span>
+                              <span class="s0">ImageList[index][</span><span class="s1">&quot;name&quot;</span><span class="s0">],</span>
+                              <span class="s0">textAlign: TextAlign.center,</span>
+                              <span class="s0">style:  TextStyle(</span>
+                                  <span class="s0">fontSize: </span><span class="s4">20</span><span class="s0">,</span>
+                                  <span class="s0">color: Colors.black),</span>
+                            <span class="s0">)</span>
+                          <span class="s0">],</span>
+                        <span class="s0">),</span>
+                      <span class="s0">),</span>
+                    <span class="s0">),</span>
+                  <span class="s0">);</span>
+
+                <span class="s0">},</span>
+              <span class="s0">),</span>
+
+
+              <span class="s0">SizedBox(height: </span><span class="s4">20</span><span class="s0">,)</span>
+            <span class="s0">]),</span>
+
+        <span class="s0">),</span>
+      <span class="s0">],</span>
+    <span class="s0">),</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+</pre>
+</body>
+</html>

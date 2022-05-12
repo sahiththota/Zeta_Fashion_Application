@@ -1,0 +1,501 @@
+<html>
+<head>
+<title>LoginPage.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #067d17;}
+.s2 { color: #0033b3;}
+.s3 { color: #1750eb;}
+.s4 { color: #8c8c8c; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+LoginPage.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:animated_splash_screen/animated_splash_screen.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:firebase_auth/firebase_auth.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:firebase_core/firebase_core.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/admin_homepage.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/home_page.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/signup_page.dart'</span><span class="s0">;</span>
+
+
+
+
+<span class="s2">class </span><span class="s0">LoginState </span><span class="s2">extends </span><span class="s0">StatelessWidget {</span>
+  <span class="s2">const </span><span class="s0">LoginState({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return </span><span class="s0">AnimatedSplashScreen(</span>
+        <span class="s0">splash: Column(</span>
+          <span class="s0">children: [</span>
+            <span class="s0">Image.asset(</span><span class="s1">&quot;assets/zeta.jpg&quot;</span><span class="s0">),</span>
+          <span class="s2">const </span><span class="s0">Text(</span><span class="s1">&quot;ZETA FASHION&quot;</span><span class="s0">, style: TextStyle(fontSize: </span><span class="s3">20</span><span class="s0">, fontWeight: FontWeight.bold, color: Colors.white)),</span>
+          <span class="s0">],</span>
+        <span class="s0">),</span>
+        <span class="s0">nextScreen: </span><span class="s2">const </span><span class="s0">ZetaFashion(),</span>
+    <span class="s0">splashIconSize: </span><span class="s3">250</span><span class="s0">,</span>
+    <span class="s0">duration: </span><span class="s3">4000</span><span class="s0">,</span>
+    <span class="s0">splashTransition: SplashTransition.decoratedBoxTransition,</span>
+    <span class="s0">backgroundColor: Colors.black38,</span>
+    <span class="s4">// pageTransitionType: PageTransitionType.bottomToTop,</span>
+    <span class="s0">animationDuration: </span><span class="s2">const </span><span class="s0">Duration(seconds: </span><span class="s3">1</span><span class="s0">),);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+
+
+<span class="s2">class </span><span class="s0">ZetaFashion </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s2">const </span><span class="s0">ZetaFashion({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_ZetaFashionState createState() =&gt; _ZetaFashionState();</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_ZetaFashionState </span><span class="s2">extends </span><span class="s0">State&lt;ZetaFashion&gt; {</span>
+
+  <span class="s4">//Initalizing firebase</span>
+  <span class="s0">Future&lt;FirebaseApp&gt; _intializeFirebase() async{</span>
+    <span class="s0">FirebaseApp firebaseApp = await Firebase.initializeApp();</span>
+    <span class="s2">return </span><span class="s0">firebaseApp;</span>
+  <span class="s0">}</span>
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return </span><span class="s0">Scaffold(</span>
+      <span class="s0">body: FutureBuilder(</span>
+        <span class="s0">future: _intializeFirebase(),</span>
+        <span class="s0">builder: (context, snapshot){</span>
+          <span class="s2">if</span><span class="s0">(snapshot.connectionState == ConnectionState.done){</span>
+            <span class="s2">return const </span><span class="s0">ZetaFashionState();</span>
+          <span class="s0">}</span>
+          <span class="s2">return const </span><span class="s0">Center(</span>
+            <span class="s0">child: CircularProgressIndicator(),</span>
+          <span class="s0">);</span>
+        <span class="s0">}</span>
+      <span class="s0">),</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+
+<span class="s2">class </span><span class="s0">ZetaFashionState </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s2">const </span><span class="s0">ZetaFashionState({ Key? key }) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">State&lt;ZetaFashionState&gt; createState() =&gt; _ZetaFashionStateState();</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_ZetaFashionStateState </span><span class="s2">extends </span><span class="s0">State&lt;ZetaFashionState&gt; {</span>
+
+  <span class="s4">//Creating Logon function</span>
+  <span class="s0">static Future&lt;User?&gt; loginUsingEmailPassword(</span>
+      <span class="s0">{required String email, required String password, required BuildContext context}) async {</span>
+    <span class="s0">FirebaseAuth auth = FirebaseAuth.instance;</span>
+    <span class="s0">User? user;</span>
+    <span class="s2">try</span><span class="s0">{</span>
+      <span class="s0">UserCredential userCredentials = await auth.signInWithEmailAndPassword(email: email, password: password);</span>
+      <span class="s0">user = userCredentials.user;</span>
+    <span class="s0">}</span>
+    <span class="s0">on FirebaseAuthException </span><span class="s2">catch</span><span class="s0">(e){</span>
+      <span class="s2">if</span><span class="s0">(e.code == </span><span class="s1">&quot;user-not-fount&quot;</span><span class="s0">){</span>
+        <span class="s0">print(</span><span class="s1">&quot;cannot create account&quot;</span><span class="s0">);</span>
+      <span class="s0">}</span>
+    <span class="s0">}</span>
+    <span class="s2">return </span><span class="s0">user;</span>
+
+      <span class="s0">}</span>
+
+
+
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s0">TextEditingController _emailC = TextEditingController();</span>
+    <span class="s0">TextEditingController _paswordC = TextEditingController();</span>
+    <span class="s2">return </span><span class="s0">Scaffold(</span>
+      <span class="s0">body: Stack(</span>
+        <span class="s0">children: &lt;Widget&gt;[</span>
+          <span class="s0">Container(</span>
+            <span class="s0">color: Colors.black,</span>
+            <span class="s0">height: double.infinity,</span>
+            <span class="s0">width: double.infinity,</span>
+          <span class="s0">),</span>
+
+          <span class="s0">Container(</span>
+            <span class="s0">height: double.infinity,</span>
+            <span class="s0">child: SingleChildScrollView(</span>
+              <span class="s0">physics: </span><span class="s2">const </span><span class="s0">AlwaysScrollableScrollPhysics(),</span>
+              <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.symmetric(</span>
+                <span class="s0">horizontal: </span><span class="s3">40.0</span><span class="s0">,</span>
+                <span class="s0">vertical: </span><span class="s3">100.0</span><span class="s0">,</span>
+
+              <span class="s0">),</span>
+              <span class="s0">child: Column(</span>
+                <span class="s0">mainAxisAlignment: MainAxisAlignment.center,</span>
+                <span class="s0">children: &lt;Widget&gt;[</span>
+
+                  <span class="s2">const </span><span class="s0">Center(</span>
+                    <span class="s0">child:</span>
+                    <span class="s0">Text(</span><span class="s1">&quot;ZETA-FASHION&quot;</span><span class="s0">,</span>
+                      <span class="s0">style: TextStyle(</span>
+                        <span class="s0">color: Color(</span><span class="s3">0xFFFFFFFF</span><span class="s0">),</span>
+                        <span class="s0">letterSpacing: </span><span class="s3">5</span><span class="s0">,</span>
+                        <span class="s0">fontFamily: </span><span class="s1">&quot;OpenSans&quot;</span><span class="s0">,</span>
+                        <span class="s0">fontSize: </span><span class="s3">30.0</span><span class="s0">,</span>
+                        <span class="s0">fontWeight: FontWeight.bold,</span>
+                          <span class="s0">shadows: &lt;Shadow&gt;[</span>
+                              <span class="s0">Shadow(</span>
+                                  <span class="s0">offset: Offset(</span><span class="s3">5.5</span><span class="s0">, </span><span class="s3">2.2</span><span class="s0">),</span>
+                                  <span class="s0">blurRadius: </span><span class="s3">3.0</span><span class="s0">,</span>
+                                  <span class="s0">color: Colors.red,</span>
+                                     <span class="s0">),</span>
+                      <span class="s0">]),),),</span>
+
+                  <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">30</span><span class="s0">),</span>
+                  <span class="s2">const </span><span class="s0">Center(</span>
+                  <span class="s0">child: Text(</span><span class="s1">&quot;SIGN IN&quot;</span><span class="s0">,</span>
+                  <span class="s0">style: TextStyle(</span>
+                    <span class="s0">color: Colors.white,</span>
+                    <span class="s0">fontFamily: </span><span class="s1">&quot;OpenSans&quot;</span><span class="s0">,</span>
+                    <span class="s0">fontSize: </span><span class="s3">25.0</span><span class="s0">,</span>
+                    <span class="s0">fontWeight: FontWeight.bold,</span>
+
+                  <span class="s0">),),),</span>
+                 <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">10.0</span><span class="s0">),</span>
+
+                  <span class="s0">Column(</span>
+                    <span class="s0">crossAxisAlignment: CrossAxisAlignment.start,</span>
+                    <span class="s0">children: &lt;Widget&gt;[</span>
+                      <span class="s2">const </span><span class="s0">Text(</span>
+                          <span class="s1">&quot;Email&quot;</span><span class="s0">,</span>
+                        <span class="s0">style:</span>
+                         <span class="s0">TextStyle(</span>
+                          <span class="s0">color: Colors.black,</span>
+                          <span class="s0">fontFamily: </span><span class="s1">&quot;OpenSans&quot;</span><span class="s0">,</span>
+                          <span class="s0">fontSize: </span><span class="s3">20.0</span><span class="s0">,</span>
+                          <span class="s0">fontWeight: FontWeight.bold,</span>
+                        <span class="s0">),</span>
+                      <span class="s0">),</span>
+                      <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">10</span><span class="s0">,),</span>
+                      <span class="s0">Container(</span>
+                        <span class="s0">alignment: Alignment.centerLeft,</span>
+                        <span class="s0">decoration: BoxDecoration(</span>
+                          <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">8.0</span><span class="s0">),</span>
+                          <span class="s0">color: Colors.white,</span>
+
+                          <span class="s0">boxShadow: [</span>
+                            <span class="s2">const </span><span class="s0">BoxShadow(</span>
+                              <span class="s0">color: Colors.black,</span>
+                              <span class="s0">blurRadius: </span><span class="s3">2.0</span><span class="s0">,</span>
+                              <span class="s0">spreadRadius: </span><span class="s3">0.0</span><span class="s0">,</span>
+                              <span class="s0">offset: Offset(</span><span class="s3">2.0</span><span class="s0">, </span><span class="s3">2.0</span><span class="s0">), </span><span class="s4">// shadow direction: bottom right</span>
+                            <span class="s0">)</span>
+                          <span class="s0">],</span>
+                        <span class="s0">),</span>
+                        <span class="s0">height: </span><span class="s3">60</span><span class="s0">,</span>
+                        <span class="s0">child:  TextField(</span>
+                          <span class="s0">controller: _emailC,</span>
+                          <span class="s0">keyboardType: TextInputType.emailAddress,</span>
+                          <span class="s0">style: TextStyle(color: Colors.black, fontSize: </span><span class="s3">25.0</span><span class="s0">),</span>
+                          <span class="s0">decoration: InputDecoration(</span>
+                              <span class="s0">border: InputBorder.none,</span>
+                              <span class="s0">contentPadding: EdgeInsets.only(top: </span><span class="s3">7.0</span><span class="s0">),</span>
+                            <span class="s0">prefixIcon: Icon(</span>
+                            <span class="s0">Icons.email,</span>
+                          <span class="s0">),</span>
+                              <span class="s0">hintText: </span><span class="s1">&quot;Enter Email Id&quot;</span><span class="s0">,</span>
+                              <span class="s0">hintStyle: TextStyle(fontSize: </span><span class="s3">25.0</span><span class="s0">, color: Colors.grey, fontFamily: </span><span class="s1">&quot;OpenSans&quot;</span><span class="s0">,),</span>
+
+                          <span class="s0">),</span>
+                        <span class="s0">),</span>
+                      <span class="s0">),</span>
+                    <span class="s0">],</span>
+                  <span class="s0">),</span>
+                  <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">10.0</span><span class="s0">,),</span>
+                  <span class="s0">Column(</span>
+                    <span class="s0">crossAxisAlignment: CrossAxisAlignment.start,</span>
+                    <span class="s0">children: &lt;Widget&gt;[</span>
+                      <span class="s2">const </span><span class="s0">Text(</span>
+                        <span class="s1">&quot;Password&quot;</span><span class="s0">,</span>
+                        <span class="s0">style:</span>
+                         <span class="s0">TextStyle(</span>
+                          <span class="s0">color: Colors.black,</span>
+                          <span class="s0">fontFamily: </span><span class="s1">&quot;OpenSans&quot;</span><span class="s0">,</span>
+                          <span class="s0">fontSize: </span><span class="s3">20.0</span><span class="s0">,</span>
+                          <span class="s0">fontWeight: FontWeight.bold,</span>
+                        <span class="s0">),</span>
+                      <span class="s0">),</span>
+                      <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">10.0</span><span class="s0">),</span>
+                      <span class="s0">Container(</span>
+                        <span class="s0">alignment: Alignment.centerLeft,</span>
+                        <span class="s0">decoration: BoxDecoration(</span>
+                          <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">8.0</span><span class="s0">),</span>
+                          <span class="s0">color: Colors.white,</span>
+                          <span class="s0">boxShadow: [</span>
+                            <span class="s2">const </span><span class="s0">BoxShadow(</span>
+                              <span class="s0">color: Colors.black,</span>
+                              <span class="s0">blurRadius: </span><span class="s3">2.0</span><span class="s0">,</span>
+                              <span class="s0">spreadRadius: </span><span class="s3">0.0</span><span class="s0">,</span>
+                              <span class="s0">offset: Offset(</span><span class="s3">2.0</span><span class="s0">, </span><span class="s3">2.0</span><span class="s0">), </span><span class="s4">// shadow direction: bottom right</span>
+                            <span class="s0">)</span>
+                          <span class="s0">],</span>
+                        <span class="s0">),</span>
+                        <span class="s0">height: </span><span class="s3">60</span><span class="s0">,</span>
+                        <span class="s0">child:  TextField(</span>
+                          <span class="s0">controller: _paswordC,</span>
+                          <span class="s0">obscureText: </span><span class="s2">true</span><span class="s0">,</span>
+                          <span class="s0">keyboardType: TextInputType.text,</span>
+                          <span class="s0">style: TextStyle(color: Colors.black, fontSize: </span><span class="s3">25.0</span><span class="s0">),</span>
+                          <span class="s0">decoration:  InputDecoration(</span>
+                            <span class="s0">border: InputBorder.none,</span>
+                            <span class="s0">contentPadding:  EdgeInsets.only(top: </span><span class="s3">7.0</span><span class="s0">),</span>
+                            <span class="s0">prefixIcon: Icon(</span>
+                              <span class="s0">Icons.password,</span>
+                            <span class="s0">),</span>
+                            <span class="s0">hintText: </span><span class="s1">&quot;Enter Password&quot;</span><span class="s0">,</span>
+                            <span class="s0">hintStyle: TextStyle(fontSize: </span><span class="s3">25.0</span><span class="s0">, color: Colors.grey, fontFamily: </span><span class="s1">&quot;OpenSans&quot;</span><span class="s0">, )</span>
+                          <span class="s0">),</span>
+                        <span class="s0">),</span>
+                      <span class="s0">),</span>
+
+                       <span class="s2">const </span><span class="s0">SizedBox(height:  </span><span class="s3">20.0</span><span class="s0">,),</span>
+
+
+                      <span class="s0">Column(</span>
+                        <span class="s0">children: [</span>
+
+                          <span class="s0">Container(</span>
+                            <span class="s0">alignment: Alignment.centerRight,</span>
+                            <span class="s4">// ignore: deprecated_member_use</span>
+                            <span class="s0">child: FlatButton(onPressed: () =&gt; {},</span>
+                            <span class="s0">child: </span><span class="s2">const </span><span class="s0">Text(</span>
+                              <span class="s1">&quot;Forgot Password?&quot;</span><span class="s0">,</span>
+                              <span class="s0">style: TextStyle(fontSize: </span><span class="s3">20.0</span><span class="s0">, color: Colors.white),</span>
+                            <span class="s0">),</span>
+                            <span class="s0">),</span>
+                          <span class="s0">),</span>
+                        <span class="s0">],</span>
+                      <span class="s0">),</span>
+                       <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">30.0</span><span class="s0">),</span>
+                      <span class="s0">Container(</span>
+                        <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.symmetric(vertical: </span><span class="s3">0.0</span><span class="s0">, horizontal: </span><span class="s3">40.0</span><span class="s0">),</span>
+                         <span class="s0">width: double.infinity,</span>
+                        <span class="s4">// ignore: deprecated_member_use</span>
+                        <span class="s0">child: ElevatedButton(</span>
+                          <span class="s0">style: ElevatedButton.styleFrom(</span>
+                            <span class="s0">primary: Color(</span><span class="s3">0xFFEFD47E</span><span class="s0">),</span>
+                            <span class="s0">elevation: </span><span class="s3">3</span><span class="s0">,</span>
+                            <span class="s0">shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(</span><span class="s3">10.0</span><span class="s0">)),</span>
+                            <span class="s0">minimumSize: Size(</span><span class="s3">50</span><span class="s0">, </span><span class="s3">50</span><span class="s0">),</span>
+                          <span class="s0">),</span>
+
+                            <span class="s0">onPressed: () async {</span>
+                             <span class="s0">User? user = await loginUsingEmailPassword(email: _emailC.text, password: _paswordC.text, context: context);</span>
+                             <span class="s0">print(user);</span>
+                             <span class="s4">// ignore: unrelated_type_equality_checks</span>
+                             <span class="s2">if</span><span class="s0">(user != </span><span class="s1">&quot;&quot;</span><span class="s0">){</span>
+                               <span class="s0">Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=&gt; </span><span class="s2">const </span><span class="s0">HomePage()));</span>
+                             <span class="s0">}</span>
+                             <span class="s2">else</span><span class="s0">{</span>
+                               <span class="s0">_showToast(context);</span>
+                             <span class="s0">}</span>
+                            <span class="s0">},  child: </span><span class="s2">const </span><span class="s0">Text(</span>
+                          <span class="s1">&quot;LOGIN&quot;</span><span class="s0">,</span>
+                          <span class="s0">style:  TextStyle(</span>
+                            <span class="s0">color: Colors.black,</span>
+                            <span class="s0">letterSpacing: </span><span class="s3">2.0</span><span class="s0">,</span>
+                            <span class="s0">fontSize: </span><span class="s3">20</span><span class="s0">,</span>
+                          <span class="s0">),</span>
+                        <span class="s0">),</span>
+
+                          <span class="s0">),</span>
+
+                        <span class="s0">),</span>
+                        <span class="s0">]),</span>
+                      <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">20</span><span class="s0">,),</span>
+
+                          <span class="s0">Container(</span>
+                            <span class="s0">alignment: Alignment.center,</span>
+                            <span class="s0">child: Column(</span>
+                              <span class="s0">children: &lt;Widget&gt;[</span>
+                              <span class="s2">const </span><span class="s0">Text(</span><span class="s1">&quot;-OR-&quot;</span><span class="s0">,</span>
+                              <span class="s0">style:  TextStyle(fontSize: </span><span class="s3">20</span><span class="s0">, color: Colors.white),</span>
+                            <span class="s0">),</span>
+                                <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">20</span><span class="s0">,),</span>
+                                <span class="s2">const </span><span class="s0">Text(</span><span class="s1">&quot;Sign in with :&quot;</span><span class="s0">, style: TextStyle(fontSize: </span><span class="s3">20</span><span class="s0">, color:Colors.white),)</span>
+                          <span class="s0">]),</span>
+                        
+                      <span class="s0">),</span>
+                      <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">20</span><span class="s0">),</span>
+
+
+                        <span class="s0">Row(</span>
+                          <span class="s0">mainAxisAlignment: MainAxisAlignment.spaceEvenly,</span>
+                          <span class="s0">children: &lt;Widget&gt;[</span>
+                            <span class="s0">GestureDetector(</span>
+                              <span class="s0">onTap: () =&gt;  print(</span><span class="s1">&quot;Login with facebook&quot;</span><span class="s0">),</span>
+                              <span class="s0">child: Container(</span>
+                                <span class="s0">height: </span><span class="s3">60</span><span class="s0">,</span>
+                                  <span class="s0">width: </span><span class="s3">60</span><span class="s0">,</span>
+                                  <span class="s0">decoration: </span><span class="s2">const </span><span class="s0">BoxDecoration(</span>
+                                    <span class="s0">shape: BoxShape.circle,</span>
+                                    <span class="s0">color: Colors.white,</span>
+                                    <span class="s0">boxShadow: [</span>
+                                       <span class="s0">BoxShadow(</span>
+                                        <span class="s0">color: Colors.black,</span>
+                                        <span class="s0">offset:  Offset(</span><span class="s3">0</span><span class="s0">,</span><span class="s3">2</span><span class="s0">),</span>
+                                        <span class="s0">blurRadius: </span><span class="s3">6.0</span><span class="s0">,</span>
+                                      <span class="s0">),</span>
+                                    <span class="s0">],</span>
+                                    <span class="s0">image: DecorationImage(</span>
+                                      <span class="s0">image: AssetImage(</span><span class="s1">'assets/facebook.jpg'</span><span class="s0">),</span>
+                                    <span class="s0">)</span>
+                                  <span class="s0">),</span>
+                              <span class="s0">),</span>
+                            <span class="s0">),</span>
+
+
+                            <span class="s0">GestureDetector(</span>
+                              <span class="s0">onTap: () =&gt;  print(</span><span class="s1">&quot;Login with Google&quot;</span><span class="s0">),</span>
+                              <span class="s0">child: Container(</span>
+                                <span class="s0">height: </span><span class="s3">80</span><span class="s0">,</span>
+                                <span class="s0">width: </span><span class="s3">80</span><span class="s0">,</span>
+                                <span class="s0">decoration: </span><span class="s2">const </span><span class="s0">BoxDecoration(</span>
+                                    <span class="s0">shape: BoxShape.circle,</span>
+                                    <span class="s0">color: Colors.white,</span>
+                                    <span class="s0">boxShadow: [</span>
+                                      <span class="s0">BoxShadow(</span>
+                                        <span class="s0">color: Colors.black,</span>
+                                        <span class="s0">offset: Offset(</span><span class="s3">0</span><span class="s0">,</span><span class="s3">3</span><span class="s0">),</span>
+                                        <span class="s0">blurRadius: </span><span class="s3">9.0</span><span class="s0">,</span>
+                                      <span class="s0">),</span>
+                                    <span class="s0">],</span>
+
+                                    <span class="s0">image: DecorationImage(</span>
+                                      <span class="s0">image: AssetImage(</span><span class="s1">&quot;assets/google.jpg&quot;</span><span class="s0">),</span>
+                                    <span class="s0">)</span>
+                                <span class="s0">),</span>
+
+                              <span class="s0">),</span>
+                            <span class="s0">),</span>
+
+
+                            <span class="s0">GestureDetector(</span>
+                              <span class="s0">onTap: () =&gt;  print(</span><span class="s1">&quot;Login with apple&quot;</span><span class="s0">),</span>
+                              <span class="s0">child: Container(</span>
+                                <span class="s0">height: </span><span class="s3">60</span><span class="s0">,</span>
+                                <span class="s0">width: </span><span class="s3">60</span><span class="s0">,</span>
+                                <span class="s0">decoration: </span><span class="s2">const </span><span class="s0">BoxDecoration(</span>
+                                    <span class="s0">shape: BoxShape.circle,</span>
+                                    <span class="s0">color: Colors.white,</span>
+                                    <span class="s0">boxShadow: [</span>
+                                      <span class="s0">BoxShadow(</span>
+                                        <span class="s0">color: Colors.black,</span>
+                                        <span class="s0">offset: Offset(</span><span class="s3">0</span><span class="s0">,</span><span class="s3">2</span><span class="s0">),</span>
+                                        <span class="s0">blurRadius: </span><span class="s3">6.0</span><span class="s0">,</span>
+                                      <span class="s0">),</span>
+                                    <span class="s0">],</span>
+                                    <span class="s0">image: DecorationImage(</span>
+                                      <span class="s0">image: AssetImage(</span><span class="s1">'assets/apple.jpg'</span><span class="s0">),</span>
+                                    <span class="s0">)</span>
+                                <span class="s0">),</span>
+                              <span class="s0">),</span>
+                            <span class="s0">),</span>
+
+
+
+                          <span class="s0">],</span>
+                        <span class="s0">),</span>
+
+                      <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">20</span><span class="s0">,),</span>
+                      <span class="s0">Row(</span>
+                        <span class="s0">mainAxisAlignment: MainAxisAlignment.center,</span>
+                        <span class="s0">children: &lt;Widget&gt;[</span>
+                               <span class="s2">const </span><span class="s0">Text(</span>
+                                 <span class="s1">&quot;Don't have an account? &quot;</span><span class="s0">,</span>
+                                <span class="s0">style: TextStyle(</span>
+                                  <span class="s0">color: Colors.white,</span>
+                                  <span class="s0">fontSize: </span><span class="s3">18.0</span><span class="s0">,</span>
+                                  <span class="s0">fontWeight: FontWeight.w400,</span>
+                                <span class="s0">),</span>
+                              <span class="s0">),</span>
+                                <span class="s0">GestureDetector(</span>
+                                  <span class="s0">onTap: () =&gt; {</span>
+                                    <span class="s0">Navigator.push(context, MaterialPageRoute(builder: (context) =&gt; </span><span class="s2">const </span><span class="s0">SignUppage()))</span>
+                                  <span class="s0">},</span>
+                                  <span class="s0">child: </span><span class="s2">const </span><span class="s0">Text(</span><span class="s1">&quot;SignUp&quot;</span><span class="s0">,</span>
+                                    <span class="s0">style: TextStyle(</span>
+                                      <span class="s0">letterSpacing: </span><span class="s3">1.2</span><span class="s0">,</span>
+                                      <span class="s0">color: Colors.red,</span>
+                                      <span class="s0">fontSize: </span><span class="s3">18.0</span><span class="s0">,</span>
+                                      <span class="s0">fontWeight: FontWeight.bold,</span>
+                                    <span class="s0">),</span>
+                                  <span class="s0">),</span>
+                                <span class="s0">),</span>
+
+
+                            <span class="s0">],</span>
+                          <span class="s0">),</span>
+                  <span class="s0">SizedBox(height: </span><span class="s3">10</span><span class="s0">,),</span>
+                  <span class="s0">Row(</span>
+                    <span class="s0">mainAxisAlignment: MainAxisAlignment.center,</span>
+                    <span class="s0">children: [</span>
+                      <span class="s2">const </span><span class="s0">Text(</span>
+                        <span class="s1">&quot;Admin Login? &quot;</span><span class="s0">,</span>
+                        <span class="s0">style: TextStyle(</span>
+                          <span class="s0">color: Colors.white,</span>
+                          <span class="s0">fontSize: </span><span class="s3">18.0</span><span class="s0">,</span>
+                          <span class="s0">fontWeight: FontWeight.w400,</span>
+                        <span class="s0">),</span>
+                      <span class="s0">),</span>
+                      <span class="s0">GestureDetector(</span>
+                        <span class="s0">onTap: () =&gt; {</span>
+                          <span class="s0">Navigator.push(context, MaterialPageRoute(builder: (context) =&gt; </span><span class="s2">const </span><span class="s0">AdminPage()))</span>
+                        <span class="s0">},</span>
+                        <span class="s0">child: </span><span class="s2">const </span><span class="s0">Text(</span><span class="s1">&quot;Click here&quot;</span><span class="s0">,</span>
+                          <span class="s0">style: TextStyle(</span>
+                            <span class="s0">decoration: TextDecoration.underline,</span>
+                            <span class="s0">letterSpacing: </span><span class="s3">1</span><span class="s0">,</span>
+                            <span class="s0">color: Colors.lime,</span>
+                            <span class="s0">fontSize: </span><span class="s3">18.0</span><span class="s0">,</span>
+                            <span class="s0">fontWeight: FontWeight.bold,</span>
+                          <span class="s0">),</span>
+                        <span class="s0">),</span>
+                      <span class="s0">),</span>
+                    <span class="s0">],</span>
+                  <span class="s0">),</span>
+                        <span class="s0">],</span>
+                      <span class="s0">),</span>
+
+                  <span class="s0">),</span>
+              <span class="s0">),</span>
+
+        <span class="s0">],</span>
+      <span class="s0">),</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+
+
+<span class="s2">void </span><span class="s0">_showToast(BuildContext context) {</span>
+  <span class="s0">ScaffoldMessenger.of(context).showSnackBar(</span><span class="s2">const </span><span class="s0">SnackBar(</span>
+
+    <span class="s0">content: Text(</span><span class="s1">&quot;email/password is incorrect. Try again&quot;</span><span class="s0">,</span>
+      <span class="s0">style: TextStyle(fontSize: </span><span class="s3">20</span><span class="s0">, color: Colors.black),</span>
+      <span class="s0">textAlign: TextAlign.center,</span>
+    <span class="s0">),</span>
+    <span class="s0">backgroundColor: Colors.white,</span>
+    <span class="s0">duration: Duration(seconds: </span><span class="s3">3</span><span class="s0">),</span>
+    <span class="s0">shape: StadiumBorder(),</span>
+    <span class="s0">behavior: SnackBarBehavior.floating,</span>
+  <span class="s0">),);</span>
+<span class="s0">}</span></pre>
+</body>
+</html>

@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/example/zeta_fashion_application/BuildConfig.java
+ com.example.zeta_fashion_application.BuildConfig

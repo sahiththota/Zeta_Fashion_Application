@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>wallet.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #067d17;}
+.s2 { color: #0033b3;}
+.s3 { color: #1750eb;}
+.s4 { color: #8c8c8c; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+wallet.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'home_page.dart'</span><span class="s0">;</span>
+
+
+<span class="s2">class </span><span class="s0">Wallet </span><span class="s2">extends </span><span class="s0">StatelessWidget {</span>
+  <span class="s2">const </span><span class="s0">Wallet({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return const </span><span class="s0">MaterialApp(</span>
+      <span class="s0">debugShowCheckedModeBanner: </span><span class="s2">false</span><span class="s0">,</span>
+      <span class="s0">home: WalletState(),</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+
+<span class="s2">class </span><span class="s0">WalletState </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s2">const </span><span class="s0">WalletState({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_WalletStateState createState() =&gt; _WalletStateState();</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_WalletStateState </span><span class="s2">extends </span><span class="s0">State&lt;WalletState&gt; {</span>
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return </span><span class="s0">Scaffold(</span>
+      <span class="s0">backgroundColor: Colors.black,</span>
+      <span class="s0">appBar: AppBar(</span>
+
+        <span class="s0">backgroundColor: Colors.black,</span>
+        <span class="s0">title: </span><span class="s2">const </span><span class="s0">Text(</span><span class="s1">&quot;Wallet&quot;</span><span class="s0">, style: TextStyle(fontSize: </span><span class="s3">25</span><span class="s0">, fontWeight: FontWeight.bold, color: Colors.white),),</span>
+
+        <span class="s0">leading: IconButton(</span>
+          <span class="s0">icon: </span><span class="s2">const </span><span class="s0">Icon(</span>
+            <span class="s0">Icons.arrow_back,</span>
+          <span class="s0">), onPressed: ()=&gt;</span>
+        <span class="s0">{</span>
+          <span class="s0">Navigator.push(context,</span>
+              <span class="s0">MaterialPageRoute(builder: (context) =&gt; </span><span class="s2">const </span><span class="s0">HomePage()))</span>
+        <span class="s0">},</span>
+        <span class="s0">),</span>
+      <span class="s0">),</span>
+
+      <span class="s0">body: Stack(</span>
+        <span class="s0">children: &lt;Widget&gt;[</span>
+
+          <span class="s0">Expanded(</span>
+              <span class="s0">child: Column(</span>
+
+                <span class="s0">children: [</span>
+                <span class="s0">Align(</span>
+                <span class="s0">child: Column(</span>
+                <span class="s0">children: &lt;Widget&gt;[</span>
+      <span class="s0">GestureDetector(</span>
+      <span class="s0">onTap: () =&gt; {},</span>
+      <span class="s0">child: Container(</span>
+        <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.all(</span><span class="s3">20</span><span class="s0">),</span>
+        <span class="s0">height: </span><span class="s3">300</span><span class="s0">,</span>
+        <span class="s0">width: </span><span class="s3">400</span><span class="s0">,</span>
+        <span class="s0">decoration: BoxDecoration(</span>
+          <span class="s0">color: Colors.white,</span>
+          <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">20.0</span><span class="s0">),),</span>
+
+        <span class="s0">child: </span><span class="s2">const </span><span class="s0">Text(</span><span class="s1">&quot;Amount available : &quot;</span><span class="s0">, style: TextStyle(fontSize: </span><span class="s3">20</span><span class="s0">, fontWeight: FontWeight.bold, ),),</span>
+      <span class="s0">),</span>
+    <span class="s0">),</span>
+
+                  <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">20</span><span class="s0">,),</span>
+                  <span class="s0">GestureDetector(</span>
+                    <span class="s0">onTap: () =&gt; {},</span>
+                    <span class="s4">// ignore: deprecated_member_use</span>
+                    <span class="s0">child: RaisedButton(</span>
+                    <span class="s0">elevation: </span><span class="s3">5.0</span><span class="s0">,</span>
+                    <span class="s0">onPressed: () {</span>
+                    <span class="s0">Navigator.push(context,</span>
+                    <span class="s0">MaterialPageRoute(builder: (context) =&gt;  </span><span class="s2">const </span><span class="s0">HomePage()));</span>
+                    <span class="s0">},</span>
+                    <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.all(</span><span class="s3">15.0</span><span class="s0">),</span>
+                    <span class="s0">shape: RoundedRectangleBorder(</span>
+                    <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">20.0</span><span class="s0">),</span>
+                    <span class="s0">),</span>
+                    <span class="s0">color: Colors.white,</span>
+                    <span class="s0">child: </span><span class="s2">const </span><span class="s0">Text(</span>
+                    <span class="s1">&quot;CASHOUT&quot;</span><span class="s0">,</span>
+                    <span class="s0">style:  TextStyle(</span>
+                    <span class="s0">color: Colors.black,</span>
+                    <span class="s0">letterSpacing: </span><span class="s3">1.0</span><span class="s0">,</span>
+                    <span class="s0">fontSize: </span><span class="s3">20</span><span class="s0">,</span>
+
+                    <span class="s0">),</span>
+                    <span class="s0">),</span>
+                    <span class="s0">),</span>
+
+    <span class="s0">),</span>
+
+
+
+
+                <span class="s0">],</span>
+          <span class="s0">))</span>
+          <span class="s0">],</span>
+            <span class="s0">),</span>
+                <span class="s0">),</span>
+    <span class="s0">]),</span>
+    <span class="s0">);</span>
+
+  <span class="s0">}</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>

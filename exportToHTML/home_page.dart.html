@@ -1,0 +1,319 @@
+<html>
+<head>
+<title>home_page.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #067d17;}
+.s2 { color: #0033b3;}
+.s3 { color: #1750eb;}
+.s4 { color: #8c8c8c; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+home_page.dart</font>
+</center></td></tr></table>
+<pre>
+<span class="s0">import </span><span class="s1">'package:carousel_slider/carousel_slider.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:curved_navigation_bar/curved_navigation_bar.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/LoginPage.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/product_list.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter_slider_drawer/flutter_slider_drawer.dart'</span><span class="s0">;</span>
+
+<span class="s2">final </span><span class="s0">List&lt;String&gt; imgList = [</span>
+  <span class="s1">&quot;https://www.shopickr.com/wp-content/uploads/2016/04/snapdeal-mens-fashion-sale-2016.jpg&quot;</span><span class="s0">,</span>
+  <span class="s1">&quot;https://www.shopickr.com/wp-content/uploads/2016/04/snapdeal-mens-fashion-sale-2016.jpg&quot;</span><span class="s0">,</span>
+  <span class="s1">&quot;https://i.pinimg.com/564x/0f/ff/58/0fff58b310e24a45bfd8346f2283ede7.jpg&quot;</span><span class="s0">,</span>
+  <span class="s1">&quot;https://i.pinimg.com/564x/0f/ff/58/0fff58b310e24a45bfd8346f2283ede7.jpg&quot;</span><span class="s0">,</span>
+<span class="s0">];</span>
+
+<span class="s2">class </span><span class="s0">HomePage </span><span class="s2">extends </span><span class="s0">StatelessWidget {</span>
+  <span class="s2">const </span><span class="s0">HomePage({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return const </span><span class="s0">MaterialApp(</span>
+      <span class="s0">home: HomePageState(),</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">HomePageState </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s2">const </span><span class="s0">HomePageState({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_HomePageStateState createState() =&gt; _HomePageStateState();</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_HomePageStateState </span><span class="s2">extends </span><span class="s0">State&lt;HomePageState&gt; {</span>
+
+  <span class="s0">int activeTab = </span><span class="s3">0</span><span class="s0">;</span>
+  <span class="s2">final </span><span class="s0">List&lt;Map&gt; categories = [</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Men&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/men.jpg&quot;</span><span class="s0">,},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Women&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/menShirt1.jpg&quot;</span><span class="s0">},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Accessories&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/men.jpg&quot;</span><span class="s0">},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Kids&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/menShirt1.jpg&quot;</span><span class="s0">},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Women Sport&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/men.jpg&quot;</span><span class="s0">},</span>
+    <span class="s0">{</span><span class="s1">&quot;name&quot;</span><span class="s0">: </span><span class="s1">&quot;Men Sport&quot;</span><span class="s0">, </span><span class="s1">&quot;iconPath&quot;</span><span class="s0">: </span><span class="s1">&quot;assets/menShirt1.jpg&quot;</span><span class="s0">},</span>
+  <span class="s0">];</span>
+
+
+  <span class="s0">int _page = </span><span class="s3">0</span><span class="s0">;</span>
+  <span class="s0">GlobalKey _bottomNavigationKey = GlobalKey();</span>
+
+  <span class="s0">int currentIndex = </span><span class="s3">0</span><span class="s0">;</span>
+  <span class="s2">final </span><span class="s0">screens= &lt;Widget&gt;[</span><span class="s2">const </span><span class="s0">HomePage(), </span><span class="s2">const </span><span class="s0">ZetaFashion()];</span>
+
+  <span class="s4">// ignore: constant_identifier_names</span>
+  <span class="s0">static </span><span class="s2">const </span><span class="s0">List&lt;Widget&gt; _Items = &lt;Widget&gt;[</span>
+    <span class="s0">Icon(Icons.home, size: </span><span class="s3">30</span><span class="s0">,),</span>
+    <span class="s0">Icon(Icons.favorite, size: </span><span class="s3">30</span><span class="s0">,),</span>
+    <span class="s0">Icon(Icons.shopping_cart, size: </span><span class="s3">30</span><span class="s0">,),</span>
+    <span class="s0">Icon(Icons.person, size: </span><span class="s3">30</span><span class="s0">,),</span>
+  <span class="s0">];</span>
+
+
+  <span class="s2">final </span><span class="s0">List&lt;Widget&gt; imageSliders = imgList</span>
+      <span class="s0">.map((item) =&gt; Container(</span>
+        <span class="s0">margin: </span><span class="s2">const </span><span class="s0">EdgeInsets.all(</span><span class="s3">5.0</span><span class="s0">),</span>
+        <span class="s0">child: ClipRRect(</span>
+            <span class="s0">borderRadius: </span><span class="s2">const </span><span class="s0">BorderRadius.all(Radius.circular(</span><span class="s3">5.0</span><span class="s0">)),</span>
+            <span class="s0">child: Stack(</span>
+              <span class="s0">children: &lt;Widget&gt;[</span>
+
+                <span class="s0">Image.network(item, fit: BoxFit.fill, width: </span><span class="s3">1000.0</span><span class="s0">),</span>
+                <span class="s0">Positioned(</span>
+                  <span class="s0">bottom: </span><span class="s3">0.0</span><span class="s0">,</span>
+                  <span class="s0">left: </span><span class="s3">0.0</span><span class="s0">,</span>
+                  <span class="s0">right: </span><span class="s3">0.0</span><span class="s0">,</span>
+                  <span class="s0">child: Container(</span>
+                    <span class="s0">decoration: </span><span class="s2">const </span><span class="s0">BoxDecoration(</span>
+                      <span class="s0">gradient: LinearGradient(</span>
+                        <span class="s0">colors: [</span>
+                          <span class="s0">Color.fromARGB(</span><span class="s3">200</span><span class="s0">, </span><span class="s3">0</span><span class="s0">, </span><span class="s3">0</span><span class="s0">, </span><span class="s3">0</span><span class="s0">),</span>
+                          <span class="s0">Color.fromARGB(</span><span class="s3">0</span><span class="s0">, </span><span class="s3">0</span><span class="s0">, </span><span class="s3">0</span><span class="s0">, </span><span class="s3">0</span><span class="s0">)</span>
+                        <span class="s0">],</span>
+                        <span class="s0">begin: Alignment.bottomCenter,</span>
+                        <span class="s0">end: Alignment.topCenter,</span>
+                      <span class="s0">),</span>
+                    <span class="s0">),</span>
+                    <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.symmetric(</span>
+                        <span class="s0">vertical: </span><span class="s3">10.0</span><span class="s0">, horizontal: </span><span class="s3">20.0</span><span class="s0">),</span>
+                  <span class="s0">),</span>
+                <span class="s0">),</span>
+              <span class="s0">],</span>
+            <span class="s0">)),</span>
+      <span class="s0">))</span>
+      <span class="s0">.toList();</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+
+
+    <span class="s2">return </span><span class="s0">Scaffold(</span>
+      <span class="s0">backgroundColor: Colors.black38,</span>
+
+      <span class="s0">appBar: AppBar(</span>
+        <span class="s0">backgroundColor: Colors.black,</span>
+        <span class="s0">centerTitle: </span><span class="s2">true</span><span class="s0">,</span>
+         <span class="s0">title: </span><span class="s2">const </span><span class="s0">Text(</span><span class="s1">&quot;ZETA&quot;</span><span class="s0">, style: TextStyle(fontSize: </span><span class="s3">25</span><span class="s0">, fontWeight: FontWeight.bold, color: Colors.white),),</span>
+
+        <span class="s4">// Image.asset(</span>
+        <span class="s4">//   'assets/zeta.jpg' ,</span>
+        <span class="s4">//   scale: 8,</span>
+        <span class="s4">// ),</span>
+        <span class="s0">automaticallyImplyLeading: </span><span class="s2">false</span><span class="s0">,</span>
+        <span class="s0">actions: &lt;Widget&gt;[</span>
+          <span class="s0">IconButton(</span>
+            <span class="s0">onPressed: () =&gt; {_showToast(context),},</span>
+            <span class="s0">icon: </span><span class="s2">const </span><span class="s0">Icon(</span>
+              <span class="s0">Icons.notifications,</span>
+              <span class="s0">color: Colors.white,</span>
+            <span class="s0">),</span>
+          <span class="s0">),</span>
+
+        <span class="s0">],</span>
+      <span class="s0">),</span>
+
+      <span class="s0">body: SingleChildScrollView(</span>
+<span class="s0">child: Stack(</span>
+         <span class="s0">children: &lt;Widget&gt;[</span>
+
+
+           <span class="s0">Column(</span>
+            <span class="s0">children: [</span>
+              <span class="s0">Container(</span>
+                <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.all(</span><span class="s3">25</span><span class="s0">),</span>
+                <span class="s0">child: Flexible(</span>
+                  <span class="s0">flex: </span><span class="s3">1</span><span class="s0">,</span>
+                  <span class="s0">child: TextField(</span>
+                    <span class="s0">cursorColor: Colors.grey,</span>
+                    <span class="s0">decoration: InputDecoration(</span>
+                      <span class="s0">fillColor: Colors.white,</span>
+                      <span class="s0">filled: </span><span class="s2">true</span><span class="s0">,</span>
+                      <span class="s0">border: OutlineInputBorder(</span>
+                        <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">15</span><span class="s0">),</span>
+                        <span class="s0">borderSide: BorderSide.none,</span>
+                      <span class="s0">),</span>
+                      <span class="s0">hintText: </span><span class="s1">&quot;Search products&quot;</span><span class="s0">,</span>
+                      <span class="s0">hintStyle: </span><span class="s2">const </span><span class="s0">TextStyle(</span>
+                        <span class="s0">color: Colors.black,</span>
+                        <span class="s0">fontSize: </span><span class="s3">18</span><span class="s0">,</span>
+                      <span class="s0">),</span>
+                      <span class="s0">prefixIcon: </span><span class="s2">const </span><span class="s0">Icon(</span>
+                        <span class="s0">Icons.search,</span>
+                        <span class="s0">color: Colors.black,</span>
+                      <span class="s0">),</span>
+                    <span class="s0">),</span>
+                  <span class="s0">),</span>
+                <span class="s0">),</span>
+              <span class="s0">),</span>
+              <span class="s2">const </span><span class="s0">SizedBox(</span>
+                <span class="s0">height: </span><span class="s3">5</span><span class="s0">,</span>
+              <span class="s0">),</span>
+              <span class="s0">CarouselSlider(</span>
+                <span class="s0">options: CarouselOptions(</span>
+                  <span class="s0">aspectRatio: </span><span class="s3">2.0</span><span class="s0">,</span>
+                  <span class="s0">enlargeCenterPage: </span><span class="s2">true</span><span class="s0">,</span>
+                  <span class="s0">enableInfiniteScroll: </span><span class="s2">false</span><span class="s0">,</span>
+                  <span class="s0">initialPage: </span><span class="s3">0</span><span class="s0">,</span>
+                  <span class="s0">autoPlay: </span><span class="s2">true</span><span class="s0">,</span>
+                <span class="s0">),</span>
+                <span class="s0">items: imageSliders,</span>
+              <span class="s0">),</span>
+              <span class="s2">const </span><span class="s0">SizedBox(</span>
+                <span class="s0">height: </span><span class="s3">2</span><span class="s0">,</span>
+              <span class="s0">),</span>
+              <span class="s0">SingleChildScrollView(</span>
+                <span class="s0">child: Column(</span>
+                  <span class="s0">children: </span><span class="s2">const </span><span class="s0">&lt;Widget&gt;[</span>
+                    <span class="s0">Text(</span>
+                      <span class="s1">&quot;CATEGORIES&quot;</span><span class="s0">,</span>
+                      <span class="s0">style: TextStyle(</span>
+                        <span class="s0">fontSize: </span><span class="s3">25</span><span class="s0">,</span>
+                        <span class="s0">color: Colors.white,</span>
+                        <span class="s0">fontWeight: FontWeight.w400,</span>
+                      <span class="s0">),</span>
+                    <span class="s0">),</span>
+                  <span class="s0">],</span>
+                <span class="s0">),</span>
+              <span class="s0">),</span>
+              <span class="s2">const </span><span class="s0">SizedBox(</span>
+                <span class="s0">height: </span><span class="s3">5</span><span class="s0">,</span>
+              <span class="s0">),</span>
+              <span class="s0">Container(</span>
+                <span class="s0">color: Colors.black,</span>
+                <span class="s0">height: </span><span class="s3">150</span><span class="s0">,</span>
+                <span class="s0">child: ListView.builder(</span>
+                    <span class="s0">scrollDirection: Axis.horizontal,</span>
+                    <span class="s0">itemCount: categories.length,</span>
+                    <span class="s0">itemBuilder: (context, index) {</span>
+                      <span class="s2">return </span><span class="s0">Column(</span>
+                        <span class="s0">children: [</span>
+                          <span class="s0">Container(</span>
+                            <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.all(</span><span class="s3">10.0</span><span class="s0">),</span>
+                            <span class="s0">margin: </span><span class="s2">const </span><span class="s0">EdgeInsets.only(left: </span><span class="s3">20</span><span class="s0">, top: </span><span class="s3">15</span><span class="s0">),</span>
+                            <span class="s0">decoration: BoxDecoration(</span>
+                              <span class="s0">color: Colors.white,</span>
+                              <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">50</span><span class="s0">),</span>
+                            <span class="s0">),</span>
+
+                            <span class="s0">child: InkWell(</span>
+                              <span class="s0">onTap: () =&gt; {</span>
+                              <span class="s0">Navigator.push(context,</span>
+                              <span class="s0">MaterialPageRoute(builder: (context) =&gt;   MenFashion()))</span>
+                            <span class="s0">},</span>
+                              <span class="s0">child: Image.asset(</span>
+                                <span class="s0">categories[index][</span><span class="s1">'iconPath'</span><span class="s0">],</span>
+                                <span class="s0">height: </span><span class="s3">50</span><span class="s0">,</span>
+                                <span class="s0">width: </span><span class="s3">50</span><span class="s0">,</span>
+                              <span class="s0">),</span>
+                            <span class="s0">),</span>
+                          <span class="s0">),</span>
+                          <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">10</span><span class="s0">),</span>
+                          <span class="s0">Container(</span>
+                              <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.fromLTRB(</span><span class="s3">26.0</span><span class="s0">, </span><span class="s3">0.0</span><span class="s0">, </span><span class="s3">2.0</span><span class="s0">, </span><span class="s3">0.0</span><span class="s0">),</span>
+                              <span class="s0">child: Text(</span>
+                                <span class="s0">categories[index][</span><span class="s1">'name'</span><span class="s0">],</span>
+                                <span class="s0">style: </span><span class="s2">const </span><span class="s0">TextStyle(color: Colors.white),</span>
+                                <span class="s0">textAlign: TextAlign.center,</span>
+                              <span class="s0">)</span>
+                          <span class="s0">),</span>
+                        <span class="s0">],</span>
+                      <span class="s0">);</span>
+                    <span class="s0">}),</span>
+              <span class="s0">),</span>
+              <span class="s2">const </span><span class="s0">SizedBox(</span>
+                <span class="s0">height: </span><span class="s3">8</span><span class="s0">,</span>
+              <span class="s0">),</span>
+              <span class="s0">CarouselSlider(</span>
+                <span class="s0">options: CarouselOptions(</span>
+                  <span class="s0">height: </span><span class="s3">200</span><span class="s0">,</span>
+                  <span class="s0">aspectRatio: </span><span class="s3">2.0</span><span class="s0">,</span>
+                  <span class="s0">enlargeCenterPage: </span><span class="s2">true</span><span class="s0">,</span>
+                  <span class="s0">enableInfiniteScroll: </span><span class="s2">true</span><span class="s0">,</span>
+                  <span class="s0">initialPage: </span><span class="s3">1</span><span class="s0">,</span>
+                  <span class="s0">autoPlay: </span><span class="s2">true</span><span class="s0">,</span>
+                <span class="s0">),</span>
+                <span class="s0">items: imageSliders,</span>
+              <span class="s0">),</span>
+            <span class="s0">],</span>
+          <span class="s0">),</span>
+        <span class="s0">],</span>
+        <span class="s0">),</span>
+      <span class="s0">),</span>
+
+
+      <span class="s0">bottomNavigationBar: CurvedNavigationBar(</span>
+        <span class="s0">height: </span><span class="s3">50</span><span class="s0">,</span>
+          <span class="s0">key: _bottomNavigationKey,</span>
+        <span class="s0">index: currentIndex,</span>
+        <span class="s0">items : _Items,</span>
+          <span class="s0">buttonBackgroundColor: Colors.red,</span>
+          <span class="s0">backgroundColor: Colors.white,</span>
+            <span class="s0">onTap: (index) {</span>
+              <span class="s0">setState(() {</span>
+              <span class="s0">_page = index;</span>
+          <span class="s0">});</span>
+        <span class="s0">},</span>
+      <span class="s0">),</span>
+
+
+
+      <span class="s4">// body: HomePageState(),</span>
+
+
+    <span class="s0">);</span>
+
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+<span class="s2">void </span><span class="s0">_showToast(BuildContext context) {</span>
+
+  <span class="s0">ScaffoldMessenger.of(context).showSnackBar(</span><span class="s2">const </span><span class="s0">SnackBar(</span>
+
+    <span class="s0">content: Text(</span><span class="s1">&quot;Notifications enabled&quot;</span><span class="s0">,</span>
+    <span class="s0">style: TextStyle(fontSize: </span><span class="s3">20</span><span class="s0">, color: Colors.black),</span>
+      <span class="s0">textAlign: TextAlign.center,</span>
+    <span class="s0">),</span>
+  <span class="s0">backgroundColor: Colors.white,</span>
+    <span class="s0">duration: Duration(seconds: </span><span class="s3">3</span><span class="s0">),</span>
+    <span class="s0">shape: StadiumBorder(),</span>
+    <span class="s0">behavior: SnackBarBehavior.floating,</span>
+  <span class="s0">));</span>
+  <span class="s4">//</span>
+  <span class="s4">// final scaffold = ScaffoldMessenger.of(context);</span>
+  <span class="s4">// scaffold.showSnackBar(</span>
+  <span class="s4">//</span>
+  <span class="s4">//   SnackBar(</span>
+  <span class="s4">//     backgroundColor: Colors.transparent,</span>
+  <span class="s4">//     content: const Text('Notifications enabled' ,style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.white),),</span>
+  <span class="s4">//   ),</span>
+  <span class="s4">// );</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>

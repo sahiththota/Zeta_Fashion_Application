@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>usermodel.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #067d17;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+usermodel.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">class </span><span class="s1">UserModel{</span>
+  <span class="s1">String? uid;</span>
+  <span class="s1">String? email;</span>
+  <span class="s1">String? contactInfo;</span>
+  <span class="s1">String? password;</span>
+  <span class="s1">String? fullName;</span>
+
+  <span class="s1">UserModel({</span><span class="s0">this</span><span class="s1">.uid, </span><span class="s0">this</span><span class="s1">.email, </span><span class="s0">this</span><span class="s1">.contactInfo, </span><span class="s0">this</span><span class="s1">.fullName, </span><span class="s0">this</span><span class="s1">.password});</span>
+
+  <span class="s1">factory UserModel.fromMap(map){</span>
+    <span class="s0">return </span><span class="s1">UserModel(</span>
+        <span class="s1">uid : map[</span><span class="s2">'uid'</span><span class="s1">],</span>
+        <span class="s1">email: map[</span><span class="s2">'email'</span><span class="s1">],</span>
+      <span class="s1">contactInfo: map[</span><span class="s2">'contactInfo'</span><span class="s1">],</span>
+        <span class="s1">fullName: map[</span><span class="s2">'full_name'</span><span class="s1">],</span>
+      <span class="s1">password: map[</span><span class="s2">'password'</span><span class="s1">]</span>
+
+    <span class="s1">);</span>
+
+  <span class="s1">}</span>
+
+
+
+  <span class="s1">Map&lt;String, dynamic&gt; toMap(){</span>
+    <span class="s0">return </span><span class="s1">{</span>
+      <span class="s2">'uid'</span><span class="s1">: uid,</span>
+      <span class="s2">'email'</span><span class="s1">: email,</span>
+      <span class="s2">&quot;password&quot;</span><span class="s1">: password,</span>
+      <span class="s2">&quot;contactInfo&quot;</span><span class="s1">: contactInfo,</span>
+      <span class="s2">&quot;full_name&quot; </span><span class="s1">:fullName,</span>
+
+    <span class="s1">};</span>
+  <span class="s1">}</span>
+
+<span class="s1">}</span></pre>
+</body>
+</html>

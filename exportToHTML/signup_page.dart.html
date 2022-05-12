@@ -1,0 +1,262 @@
+<html>
+<head>
+<title>signup_page.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #067d17;}
+.s2 { color: #0033b3;}
+.s3 { color: #1750eb;}
+.s4 { color: #8c8c8c; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+signup_page.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:firebase_auth/firebase_auth.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:firebase_core/firebase_core.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:firebase_database/firebase_database.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/LoginPage.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/UserModel/usermodel.dart'</span><span class="s0">;</span>
+
+<span class="s2">class </span><span class="s0">SignUp </span><span class="s2">extends </span><span class="s0">StatelessWidget {</span>
+  <span class="s2">const </span><span class="s0">SignUp({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return const </span><span class="s0">MaterialApp(</span>
+      <span class="s0">home: SignUppage(),</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">SignUppage </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s2">const </span><span class="s0">SignUppage({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_SignUppageState createState() =&gt; _SignUppageState();</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_SignUppageState </span><span class="s2">extends </span><span class="s0">State&lt;SignUppage&gt; {</span>
+
+
+  <span class="s2">final </span><span class="s0">_formKey = GlobalKey&lt;FormState&gt;();</span>
+
+  <span class="s2">final </span><span class="s0">nameC = TextEditingController();</span>
+  <span class="s2">final </span><span class="s0">phoneC = TextEditingController();</span>
+  <span class="s2">final </span><span class="s0">emailC = TextEditingController();</span>
+  <span class="s2">final </span><span class="s0">passwordC = TextEditingController();</span>
+
+  <span class="s2">final </span><span class="s0">controller = TextEditingController();</span>
+
+
+  <span class="s0">String? get pwdValidator {</span>
+    <span class="s2">final </span><span class="s0">text = controller.value.text;</span>
+    <span class="s2">if </span><span class="s0">(text.length &lt; </span><span class="s3">6</span><span class="s0">) {</span>
+      <span class="s2">return </span><span class="s1">'Password must be longer than 6 characters'</span><span class="s0">;</span>
+    <span class="s0">} </span><span class="s2">else </span><span class="s0">{</span>
+      <span class="s2">return null</span><span class="s0">;</span>
+    <span class="s0">}</span>
+  <span class="s0">}</span>
+
+  <span class="s2">final </span><span class="s0">_auth = FirebaseAuth.instance;</span>
+  <span class="s4">// final databaseReference = Firebase.instance.ref();</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return </span><span class="s0">Scaffold(</span>
+      <span class="s0">backgroundColor: Colors.black,</span>
+      <span class="s0">appBar: AppBar(</span>
+        <span class="s0">backgroundColor: Colors.black,</span>
+        <span class="s0">title: </span><span class="s2">const </span><span class="s0">Text(</span><span class="s1">&quot;Sign Up&quot;</span><span class="s0">, style: TextStyle(</span>
+            <span class="s0">fontSize: </span><span class="s3">18</span><span class="s0">, fontWeight: FontWeight.w600, color: Colors.white),),</span>
+        <span class="s0">centerTitle: </span><span class="s2">true</span><span class="s0">,</span>
+        <span class="s0">leading: IconButton(</span>
+          <span class="s0">icon: </span><span class="s2">const </span><span class="s0">Icon(</span>
+            <span class="s0">Icons.arrow_back,</span>
+          <span class="s0">), onPressed: () =&gt;</span>
+        <span class="s0">{</span>
+          <span class="s0">Navigator.push(context,</span>
+              <span class="s0">MaterialPageRoute(builder: (context) =&gt; </span><span class="s2">const </span><span class="s0">ZetaFashion()))</span>
+        <span class="s0">},</span>
+
+        <span class="s0">),</span>
+      <span class="s0">),</span>
+
+      <span class="s0">body: SingleChildScrollView(</span>
+        <span class="s0">child: Padding(</span>
+          <span class="s0">padding: </span><span class="s2">const </span><span class="s0">EdgeInsets.all(</span><span class="s3">30.0</span><span class="s0">),</span>
+          <span class="s0">child: Column(</span>
+              <span class="s0">children: [</span>
+                <span class="s0">TextFormField(</span>
+                    <span class="s0">style: </span><span class="s2">const </span><span class="s0">TextStyle(color: Colors.white),</span>
+                    <span class="s0">decoration: InputDecoration(</span>
+                        <span class="s0">enabledBorder: </span><span class="s2">const </span><span class="s0">OutlineInputBorder(</span>
+                          <span class="s4">// width: 0.0 produces a thin &quot;hairline&quot; border</span>
+                          <span class="s0">borderSide: BorderSide(color: Colors.white),</span>
+                        <span class="s0">),</span>
+                        <span class="s0">labelText: </span><span class="s1">&quot;Full Name&quot;</span><span class="s0">,</span>
+                        <span class="s0">labelStyle: </span><span class="s2">const </span><span class="s0">TextStyle(color: Colors.white),</span>
+                        <span class="s0">border: OutlineInputBorder(</span>
+                          <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">20</span><span class="s0">),</span>
+                        <span class="s0">))</span>
+                <span class="s0">),</span>
+                <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">30</span><span class="s0">,),</span>
+
+
+                <span class="s0">TextFormField(</span>
+                    <span class="s0">style: </span><span class="s2">const </span><span class="s0">TextStyle(color: Colors.white),</span>
+                    <span class="s0">decoration: InputDecoration(</span>
+                        <span class="s0">enabledBorder: </span><span class="s2">const </span><span class="s0">OutlineInputBorder(</span>
+                          <span class="s4">// width: 0.0 produces a thin &quot;hairline&quot; border</span>
+                          <span class="s0">borderSide: BorderSide(color: Colors.white),</span>
+                        <span class="s0">),</span>
+                        <span class="s0">labelText: </span><span class="s1">&quot;Contact Information&quot;</span><span class="s0">,</span>
+                        <span class="s0">labelStyle: </span><span class="s2">const </span><span class="s0">TextStyle(color: Colors.white),</span>
+                        <span class="s0">border: OutlineInputBorder(</span>
+                          <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">20</span><span class="s0">),</span>
+                        <span class="s0">))</span>
+                <span class="s0">),</span>
+                <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">30</span><span class="s0">,),</span>
+
+                <span class="s0">TextFormField(</span>
+                    <span class="s0">style: </span><span class="s2">const </span><span class="s0">TextStyle(color: Colors.white),</span>
+                    <span class="s0">decoration: InputDecoration(</span>
+                        <span class="s0">enabledBorder: </span><span class="s2">const </span><span class="s0">OutlineInputBorder(</span>
+                          <span class="s4">// width: 0.0 produces a thin &quot;hairline&quot; border</span>
+                          <span class="s0">borderSide: BorderSide(color: Colors.white),</span>
+                        <span class="s0">),</span>
+                        <span class="s0">labelText: </span><span class="s1">&quot;Email Id&quot;</span><span class="s0">,</span>
+                        <span class="s0">labelStyle: </span><span class="s2">const </span><span class="s0">TextStyle(color: Colors.white),</span>
+                        <span class="s0">border: OutlineInputBorder(</span>
+                          <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">20</span><span class="s0">),</span>
+                        <span class="s0">))</span>
+                <span class="s0">),</span>
+                <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">30</span><span class="s0">,),</span>
+
+                <span class="s0">TextFormField(</span>
+                    <span class="s0">style: </span><span class="s2">const </span><span class="s0">TextStyle(color: Colors.white),</span>
+                    <span class="s0">obscureText: </span><span class="s2">true</span><span class="s0">,</span>
+                    <span class="s0">decoration: InputDecoration(</span>
+                        <span class="s0">errorText: pwdValidator,</span>
+                        <span class="s0">errorStyle: </span><span class="s2">const </span><span class="s0">TextStyle(color: Colors.white),</span>
+                        <span class="s0">enabledBorder: </span><span class="s2">const </span><span class="s0">OutlineInputBorder(</span>
+                          <span class="s4">// width: 0.0 produces a thin &quot;hairline&quot; border</span>
+                          <span class="s0">borderSide: BorderSide(color: Colors.white),</span>
+                        <span class="s0">),</span>
+                        <span class="s0">labelText: </span><span class="s1">&quot;Password&quot;</span><span class="s0">,</span>
+                        <span class="s0">labelStyle: </span><span class="s2">const </span><span class="s0">TextStyle(color: Colors.white),</span>
+                        <span class="s0">border: OutlineInputBorder(</span>
+                          <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">20</span><span class="s0">),</span>
+                        <span class="s0">))</span>
+                <span class="s0">),</span>
+                <span class="s2">const </span><span class="s0">SizedBox(height: </span><span class="s3">50</span><span class="s0">,),</span>
+
+
+                <span class="s0">ElevatedButton(</span>
+                  <span class="s0">onPressed: () {</span>
+                    <span class="s2">if </span><span class="s0">(nameC.text != </span><span class="s1">&quot;&quot; </span><span class="s0">&amp;&amp; phoneC.text != </span><span class="s1">&quot;&quot; </span><span class="s0">&amp;&amp;</span>
+                        <span class="s0">emailC.text != </span><span class="s1">&quot;&quot; </span><span class="s0">&amp;&amp; passwordC.text != </span><span class="s1">&quot;&quot;</span><span class="s0">) {</span>
+                      <span class="s0">Insertdata(</span>
+                          <span class="s0">nameC.text, phoneC.text, emailC.text, passwordC.text);</span>
+                      <span class="s0">Navigator.push(context, MaterialPageRoute(builder: (context) =&gt; </span><span class="s2">const </span><span class="s0">LoginState()));</span>
+                    <span class="s0">}</span>
+                    <span class="s2">else</span><span class="s0">{</span>
+                      <span class="s4">// ignore: avoid_print</span>
+                      <span class="s0">print(</span><span class="s1">&quot;No data entered&quot;</span><span class="s0">);</span>
+                    <span class="s0">}</span>
+
+                  <span class="s0">},</span>
+                  <span class="s0">style: ElevatedButton.styleFrom(primary: </span><span class="s2">const </span><span class="s0">Color(</span><span class="s3">0xFFEFD47E</span><span class="s0">)),</span>
+                  <span class="s4">// color: Color(0xFFEFD47E),</span>
+                  <span class="s0">child: </span><span class="s2">const </span><span class="s0">Text(</span>
+                    <span class="s1">&quot;Sign Up&quot;</span><span class="s0">,</span>
+                    <span class="s0">style: TextStyle(</span>
+                      <span class="s0">color: Colors.black,</span>
+                      <span class="s0">letterSpacing: </span><span class="s3">1.0</span><span class="s0">,</span>
+                      <span class="s0">fontSize: </span><span class="s3">20</span><span class="s0">,</span>
+
+                    <span class="s0">),</span>
+                  <span class="s0">),</span>
+                <span class="s0">),</span>
+
+              <span class="s0">]),</span>
+
+        <span class="s0">),</span>
+      <span class="s0">),</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+
+  <span class="s4">// ignore: non_constant_identifier_names</span>
+  <span class="s0">Future&lt;</span><span class="s2">void</span><span class="s0">&gt; Insertdata(String name, String phoneNumber, String email,</span>
+      <span class="s0">String password,) async {</span>
+    <span class="s4">// String? key = databaseReference.child(phoneNumber).child(&quot;ListRegister&quot;).push().key;</span>
+    <span class="s4">// databaseReference.child(&quot;Users&quot;).child(phoneNumber).child(key!).set({</span>
+    <span class="s4">//   &quot;Full Name&quot;: name,</span>
+    <span class="s4">//   &quot;Contact Information&quot;: phoneNumber,</span>
+    <span class="s4">//   &quot;Email&quot;: Email,</span>
+    <span class="s4">//   &quot;Password&quot;: password,</span>
+    <span class="s4">// });</span>
+    <span class="s4">// nameC.clear();</span>
+    <span class="s4">// phoneC.clear();</span>
+    <span class="s4">// emailC.clear();</span>
+    <span class="s4">// passwordC.clear();</span>
+
+
+
+
+    <span class="s2">if</span><span class="s0">(_formKey.currentState!.validate() ){</span>
+      <span class="s0">await _auth.createUserWithEmailAndPassword(email: email, password: password).then((value) =&gt;</span>
+      <span class="s0">{</span>
+        <span class="s0">postDetailstoFirestore()</span>
+      <span class="s0">}).catchError((e){</span>
+          <span class="s0">_showToast(context);</span>
+      <span class="s0">});</span>
+    <span class="s0">}</span>
+  <span class="s0">}</span>
+
+
+
+  <span class="s0">postDetailstoFirestore() async{</span>
+    <span class="s0">FirebaseDatabase firebaseFireStore = FirebaseDatabase.instance;</span>
+    <span class="s0">User? user = _auth.currentUser;</span>
+
+    <span class="s0">UserModel userModel = UserModel();</span>
+
+
+    <span class="s0">userModel.fullName = nameC.text;</span>
+    <span class="s0">userModel.email = user!.email;</span>
+    <span class="s0">userModel.contactInfo = phoneC.text;</span>
+    <span class="s0">userModel.uid = user.uid;</span>
+
+
+
+  <span class="s0">}</span>
+
+
+
+
+
+  <span class="s2">void </span><span class="s0">_showToast(BuildContext context, {msg}) {</span>
+    <span class="s0">ScaffoldMessenger.of(context).showSnackBar(</span><span class="s2">const </span><span class="s0">SnackBar(</span>
+
+      <span class="s0">content: Text(</span><span class="s1">&quot;Enter the required information&quot;</span><span class="s0">,</span>
+        <span class="s0">style: TextStyle(fontSize: </span><span class="s3">20</span><span class="s0">, color: Colors.black),</span>
+        <span class="s0">textAlign: TextAlign.center,</span>
+      <span class="s0">),</span>
+      <span class="s0">backgroundColor: Colors.white,</span>
+      <span class="s0">duration: Duration(seconds: </span><span class="s3">3</span><span class="s0">),</span>
+      <span class="s0">shape: StadiumBorder(),</span>
+      <span class="s0">behavior: SnackBarBehavior.floating,</span>
+    <span class="s0">));</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+
+</pre>
+</body>
+</html>

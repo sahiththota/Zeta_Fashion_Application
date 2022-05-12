@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>main.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #067d17;}
+.s2 { color: #0033b3;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:firebase_auth/firebase_auth.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/LoginPage.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/admin_homepage.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/checkout_screen.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/home_page.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/product_list.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/productScreen.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:zeta_fashion_application/wallet.dart'</span><span class="s0">;</span>
+
+
+<span class="s2">void </span><span class="s0">main() {</span>
+
+  <span class="s0">runApp(</span><span class="s2">const </span><span class="s0">MaterialApp(</span>
+      <span class="s0">home: NavState(),</span>
+  <span class="s0">),</span>
+  <span class="s0">);</span>
+<span class="s0">}</span>
+
+
+<span class="s2">class </span><span class="s0">NavState </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s2">const </span><span class="s0">NavState({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_NavStateState createState() =&gt; _NavStateState();</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_NavStateState </span><span class="s2">extends </span><span class="s0">State&lt;NavState&gt; {</span>
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return </span><span class="s0">MaterialApp(</span>
+      <span class="s0">debugShowCheckedModeBanner: </span><span class="s2">false</span><span class="s0">,</span>
+      <span class="s0">routes: {</span>
+        <span class="s1">'/main_layout'</span><span class="s0">: (context) =&gt; </span><span class="s2">const </span><span class="s0">LoginState(),</span>
+        <span class="s1">'/page1'</span><span class="s0">: (context) =&gt; </span><span class="s2">const </span><span class="s0">HomePage(),</span>
+        <span class="s1">'/page2'</span><span class="s0">: (context) =&gt;  MenFashion(),</span>
+        <span class="s1">'/page3'</span><span class="s0">: (context) =&gt; </span><span class="s2">const </span><span class="s0">Wallet(),</span>
+        <span class="s1">'/page4'</span><span class="s0">: (context) =&gt; </span><span class="s2">const </span><span class="s0">CheckoutScreen(),</span>
+        <span class="s1">'/page5'</span><span class="s0">: (context) =&gt;  ProductScreen(),</span>
+        <span class="s1">'/page6'</span><span class="s0">: (context) =&gt; </span><span class="s2">const </span><span class="s0">AdminPage(),</span>
+
+      <span class="s0">},</span>
+      <span class="s0">initialRoute: </span><span class="s1">'/main_layout'</span><span class="s0">,</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>

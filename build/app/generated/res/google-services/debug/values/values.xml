@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">130218565003-nlueidourj02cr3cg6fmk8hd9m68c2ro.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">130218565003</string>
+    <string name="google_api_key" translatable="false">AIzaSyAxOZM8mTmaGMFFw2cmoX1PLLIai9OakfQ</string>
+    <string name="google_app_id" translatable="false">1:130218565003:android:a9848aeb935acc48e8a38e</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAxOZM8mTmaGMFFw2cmoX1PLLIai9OakfQ</string>
+    <string name="google_storage_bucket" translatable="false">zetafashion-flutter.appspot.com</string>
+    <string name="project_id" translatable="false">zetafashion-flutter</string>
+</resources>
