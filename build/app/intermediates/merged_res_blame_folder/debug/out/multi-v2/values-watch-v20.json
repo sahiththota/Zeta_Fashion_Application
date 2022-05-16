@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/sahiththota/AndroidStudioProjects/zeta_fashion_application/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "/Users/sahiththota/Desktop/Zeta_Fashion_Application/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
                     "source": "/Users/sahiththota/.gradle/caches/transforms-2/files-2.1/80be3264d0fabb5197d8cbe9ac1420fb/jetified-play-services-auth-17.0.0/res/values-watch-v20/values.xml",

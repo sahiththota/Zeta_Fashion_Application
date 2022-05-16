@@ -21,22 +21,23 @@ class MenFashionState extends StatefulWidget {
    MenFashionState({Key? key}) : super(key: key);
 
   @override
-  _MenFashionStateState createState() => _MenFashionStateState();
+  State <MenFashionState> createState() => _MenFashionStateState();
 }
 
 class _MenFashionStateState extends State<MenFashionState> {
 
   // ignore: non_ant_identifier_names
   final List<Map> ImageList = [
-    {"name": "Product 1", "iconPath": "assets/men.jpg",},
-    {"name": "Product 2", "iconPath": "assets/men.jpg"},
-    {"name": "Product 3", "iconPath": "assets/men.jpg"},
-    {"name": "Product 4", "iconPath": "assets/men.jpg"},
-    {"name": "Product 5", "iconPath": "assets/men.jpg"},
-    {"name": "Product 6", "iconPath": "assets/men.jpg"},
-    {"name": "Product 7", "iconPath": "assets/men.jpg"},
-    {"name": "Product 8", "iconPath": "assets/men.jpg"},
-    {"name": "Product 9", "iconPath": "assets/men.jpg"},
+    {"name": "Product 1", "description" : "Made by @", "iconPath": "https://static.fibre2fashion.com/articleresources/images/81/8092/mens-fashion_big_Big.jpg",},
+    {"name": "Product 2", "description" : "Made by @","iconPath": "https://static.wixstatic.com/media/4c2e0b5374204d6ca536142df349729f.jpg/v1/fill/w_1880,h_1040,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Male%20fashion%20model.jpg"},
+    {"name": "Product 3", "description" : "Made by @","iconPath": "https://centralandme.com/wp-content/uploads/2017/09/sweat-shirt-thumb.jpg"},
+    {"name": "Product 4", "description" : "Made by @","iconPath": "https://img.mensxp.com/media/content/2019/Dec/2-1576647108.jpg"},
+    {"name": "Product 5", "description" : "Made by @","iconPath": "https://i.pinimg.com/originals/b2/d5/5f/b2d55fe4e18775a6146fb5c5d7b26f78.jpg"},
+    {"name": "Product 6", "description" : "Made by @", "iconPath": "https://static.fibre2fashion.com/articleresources/images/81/8092/mens-fashion_big_Big.jpg",},
+    {"name": "Product 7", "description" : "Made by @","iconPath": "https://static.wixstatic.com/media/4c2e0b5374204d6ca536142df349729f.jpg/v1/fill/w_1880,h_1040,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Male%20fashion%20model.jpg"},
+    {"name": "Product 8", "description" : "Made by @","iconPath": "https://centralandme.com/wp-content/uploads/2017/09/sweat-shirt-thumb.jpg"},
+    {"name": "Product 9", "description" : "Made by @","iconPath": "https://img.mensxp.com/media/content/2019/Dec/2-1576647108.jpg"},
+    {"name": "Product 10", "description" : "Made by @","iconPath": "https://i.pinimg.com/originals/b2/d5/5f/b2d55fe4e18775a6146fb5c5d7b26f78.jpg"},
   ];
 
 
@@ -137,7 +138,7 @@ class _MenFashionStateState extends State<MenFashionState> {
                               },
                               child: Padding(
                                 padding:  EdgeInsets.all(15),
-                                child: Image.asset(
+                                child: Image.network(
                                   ImageList[index]['iconPath'],
                                   fit: BoxFit.cover,
                                   alignment: Alignment.center,
