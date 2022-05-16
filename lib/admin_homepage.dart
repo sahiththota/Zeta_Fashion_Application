@@ -30,7 +30,7 @@ class AdminScreenState extends StatefulWidget {
   const AdminScreenState({Key? key}) : super(key: key);
 
   @override
-  _AdminScreenState createState() => _AdminScreenState();
+  State <AdminScreenState> createState() => _AdminScreenState();
 }
 
 class _AdminScreenState extends State<AdminScreenState> {
@@ -44,7 +44,7 @@ class _AdminScreenState extends State<AdminScreenState> {
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-            onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context) => ZetaFashion()))},
+            onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context) => ZetaFashionState()))},
             icon: const Icon(
               Icons.login_outlined,
               color: Colors.white,

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/sahiththota/AndroidStudioProjects/zeta_fashion_application/build/google_maps_flutter/intermediates/incremental/mergeDebugResources/merged.dir/values-iw/values-iw.xml",
+            "outputFile": "/Users/sahiththota/Desktop/Zeta_Fashion_Application/build/google_maps_flutter/intermediates/res/merged/debug/values-iw/values-iw.xml",
             "map": [
                 {
                     "source": "/Users/sahiththota/.gradle/caches/transforms-2/files-2.1/4a1e8147c3db656939cfc830651ce63e/jetified-play-services-basement-18.0.0/res/values-iw/values.xml",
@@ -57,7 +57,7 @@
             ]
         },
         {
-            "outputFile": "/Users/sahiththota/AndroidStudioProjects/zeta_fashion_application/build/google_maps_flutter/intermediates/res/merged/debug/values-iw/values-iw.xml",
+            "outputFile": "/Users/sahiththota/Desktop/Zeta_Fashion_Application/build/google_maps_flutter/intermediates/incremental/mergeDebugResources/merged.dir/values-iw/values-iw.xml",
             "map": [
                 {
                     "source": "/Users/sahiththota/.gradle/caches/transforms-2/files-2.1/4a1e8147c3db656939cfc830651ce63e/jetified-play-services-basement-18.0.0/res/values-iw/values.xml",

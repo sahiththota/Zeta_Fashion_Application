@@ -1,6 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:zeta_fashion_application/LoginPage.dart';
 import 'package:zeta_fashion_application/UserModel/usermodel.dart';
@@ -20,13 +19,12 @@ class SignUppage extends StatefulWidget {
   const SignUppage({Key? key}) : super(key: key);
 
   @override
-  _SignUppageState createState() => _SignUppageState();
+  State <SignUppage> createState() => _SignUppageState();
 }
 
 class _SignUppageState extends State<SignUppage> {
 
 
-  final _formKey = GlobalKey<FormState>();
 
   final nameC = TextEditingController();
   final phoneC = TextEditingController();
@@ -63,7 +61,7 @@ class _SignUppageState extends State<SignUppage> {
           ), onPressed: () =>
         {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ZetaFashion()))
+              MaterialPageRoute(builder: (context) => const ZetaFashionState()))
         },
 
         ),
@@ -75,6 +73,10 @@ class _SignUppageState extends State<SignUppage> {
           child: Column(
               children: [
                 TextFormField(
+                  controller: nameC,
+                    onSaved: (value){
+                    nameC.text = value!;
+                    },
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         enabledBorder: const OutlineInputBorder(
@@ -91,6 +93,10 @@ class _SignUppageState extends State<SignUppage> {
 
 
                 TextFormField(
+                  controller: phoneC,
+                    onSaved: (value){
+                    phoneC.text = value!;
+                    },
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         enabledBorder: const OutlineInputBorder(
@@ -106,6 +112,10 @@ class _SignUppageState extends State<SignUppage> {
                 const SizedBox(height: 30,),
 
                 TextFormField(
+                  controller: emailC,
+                    onSaved: (value){
+                      emailC.text = value!;
+                    },
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         enabledBorder: const OutlineInputBorder(
@@ -121,6 +131,11 @@ class _SignUppageState extends State<SignUppage> {
                 const SizedBox(height: 30,),
 
                 TextFormField(
+
+                  controller: passwordC,
+                    onSaved: (value){
+                      passwordC.text = value!;
+                    },
                     style: const TextStyle(color: Colors.white),
                     obscureText: true,
                     decoration: InputDecoration(
@@ -141,11 +156,13 @@ class _SignUppageState extends State<SignUppage> {
 
                 ElevatedButton(
                   onPressed: () {
-                    if (nameC.text != "" && phoneC.text != "" &&
-                        emailC.text != "" && passwordC.text != "") {
-                      Insertdata(
+                    // ignore: avoid_print
+                    print(nameC.text + phoneC.text);
+                    if (nameC.text.isNotEmpty   && phoneC.text.isNotEmpty &&
+                        emailC.text.isNotEmpty && passwordC.text.isNotEmpty) {
+                      InsertData(
                           nameC.text, phoneC.text, emailC.text, passwordC.text);
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginState()));
+
                     }
                     else{
                       // ignore: avoid_print
@@ -174,7 +191,7 @@ class _SignUppageState extends State<SignUppage> {
   }
 
   // ignore: non_constant_identifier_names
-  Future<void> Insertdata(String name, String phoneNumber, String email,
+  void InsertData(String name, String phoneNumber, String email,
       String password,) async {
     // String? key = databaseReference.child(phoneNumber).child("ListRegister").push().key;
     // databaseReference.child("Users").child(phoneNumber).child(key!).set({
@@ -191,20 +208,21 @@ class _SignUppageState extends State<SignUppage> {
 
 
 
-    if(_formKey.currentState!.validate() ){
-      await _auth.createUserWithEmailAndPassword(email: email, password: password).then((value) =>
+      await _auth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) =>
       {
-        postDetailstoFirestore()
+        postDetailstoFirestore(),
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginState()))
       }).catchError((e){
           _showToast(context);
       });
     }
-  }
 
 
 
   postDetailstoFirestore() async{
-    FirebaseDatabase firebaseFireStore = FirebaseDatabase.instance;
+    FirebaseFirestore firebaseFireStore = FirebaseFirestore.instance;
     User? user = _auth.currentUser;
 
     UserModel userModel = UserModel();
@@ -214,8 +232,18 @@ class _SignUppageState extends State<SignUppage> {
     userModel.email = user!.email;
     userModel.contactInfo = phoneC.text;
     userModel.uid = user.uid;
+    userModel.password = passwordC.text;
 
 
+    await firebaseFireStore
+    .collection("users")
+    .doc(user.uid)
+    .set(userModel.toMap());
+    // ignore: avoid_print
+    print("Account created");
+
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginState()));
 
   }
 
@@ -223,6 +251,8 @@ class _SignUppageState extends State<SignUppage> {
 
 
 
+
+  // ignore: unused_element
   void _showToast(BuildContext context, {msg}) {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
 

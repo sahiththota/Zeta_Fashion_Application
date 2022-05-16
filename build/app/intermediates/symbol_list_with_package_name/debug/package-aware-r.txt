@@ -42,6 +42,7 @@ attr fragmentStyle
 attr imageAspectRatio
 attr imageAspectRatioAdjust
 attr keylines
+attr lStar
 attr latLngBoundsNorthEastLatitude
 attr latLngBoundsNorthEastLongitude
 attr latLngBoundsSouthWestLatitude
@@ -279,6 +280,10 @@ id icon_group
 id icon_only
 id info
 id italic
+id item1
+id item2
+id item3
+id item4
 id left
 id light
 id line1
@@ -332,6 +337,7 @@ id text2
 id time
 id title
 id top
+id view_tree_lifecycle_owner
 id wide
 id wrap_content
 integer google_play_services_version
@@ -349,6 +355,8 @@ layout rzp_loader
 layout rzp_magic_base
 layout toast_custom
 layout wallet_test_layout
+menu example_menu
+menu example_menu2
 mipmap ic_launcher
 raw rzp_config
 string common_google_play_services_enable_button
@@ -396,7 +404,7 @@ style Widget_Support_CoordinatorLayout
 styleable ActivityFilter activityAction activityName
 styleable ActivityRule alwaysExpand
 styleable Capability queryPatterns shortcutMatchRequired
-styleable ColorStateListItem android_color android_alpha alpha
+styleable ColorStateListItem android_color android_alpha android_lStar alpha lStar
 styleable CoordinatorLayout keylines statusBarBackground
 styleable CoordinatorLayout_Layout android_layout_gravity layout_anchor layout_anchorGravity layout_behavior layout_dodgeInsetEdges layout_insetEdge layout_keyline
 styleable CustomWalletTheme customThemeStyle toolbarTextColorStyle windowTransitionStyle
@@ -413,3 +421,4 @@ styleable SplitPlaceholderRule placeholderActivityName splitLayoutDirection spli
 styleable WalletFragmentOptions appTheme environment fragmentMode fragmentStyle
 styleable WalletFragmentStyle buyButtonAppearance buyButtonHeight buyButtonText buyButtonWidth maskedWalletDetailsBackground maskedWalletDetailsButtonBackground maskedWalletDetailsButtonTextAppearance maskedWalletDetailsHeaderTextAppearance maskedWalletDetailsLogoImageType maskedWalletDetailsLogoTextColor maskedWalletDetailsTextAppearance
 xml file_provider_path
+xml flutter_share_file_paths

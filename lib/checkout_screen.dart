@@ -26,7 +26,7 @@ class CheckoutScreenState extends StatefulWidget {
   const CheckoutScreenState({Key? key}) : super(key: key);
 
   @override
-  _CheckoutScreenState createState() => _CheckoutScreenState();
+  State <CheckoutScreenState> createState() => _CheckoutScreenState();
 }
 
 class _CheckoutScreenState extends State<CheckoutScreenState> {
