@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/sahiththota/AndroidStudioProjects/zeta_fashion_application/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "/Users/sahiththota/Desktop/Zeta_Fashion_Application/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/sahiththota/AndroidStudioProjects/zeta_fashion_application/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/sahiththota/Desktop/Zeta_Fashion_Application/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

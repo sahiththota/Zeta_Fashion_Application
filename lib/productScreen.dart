@@ -1,11 +1,11 @@
-import 'package:flutter/cupertino.dart';
+// ignore: file_names
 import 'package:flutter/material.dart';
-
+import 'package:share_plus/share_plus.dart';
 import 'checkout_screen.dart';
 import 'product_list.dart';
 
 class ProductScreen extends StatefulWidget {
-   ProductScreen({Key? key}) : super(key: key);
+   const ProductScreen({Key? key}) : super(key: key);
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
@@ -26,6 +26,13 @@ class _ProductScreenState extends State<ProductScreen> {
     '5',
   ];
   GlobalKey<ScaffoldState> scafoldKey = new GlobalKey<ScaffoldState>();
+
+  final String _content =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum diam ipsum, lobortis quis ultricies non, lacinia at justo.';
+
+  void _shareContent() {
+    Share.share(_content);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +58,7 @@ class _ProductScreenState extends State<ProductScreen> {
             ),
 
             IconButton(
-              onPressed: () => {},
+              onPressed: _shareContent,
               icon:  const Icon(
                 Icons.ios_share,
                 color: Colors.white,
