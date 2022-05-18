@@ -4,12 +4,11 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:zeta_fashion_application/LoginPage.dart';
 import 'package:zeta_fashion_application/product_list.dart';
-import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
 final List<String> imgList = [
   "https://www.shopickr.com/wp-content/uploads/2016/04/snapdeal-mens-fashion-sale-2016.jpg",
-  "https://www.shopickr.com/wp-content/uploads/2016/04/snapdeal-mens-fashion-sale-2016.jpg",
-  "https://i.pinimg.com/564x/0f/ff/58/0fff58b310e24a45bfd8346f2283ede7.jpg",
+  "https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2015/05/29/Photos/Trends-U210684012534XLH--621x414@LiveMint.jpg",
+  "https://st1.latestly.com/wp-content/uploads/2018/11/Virat-Kohli-traditional-outfit-inspiration-380x214.jpg",
   "https://i.pinimg.com/564x/0f/ff/58/0fff58b310e24a45bfd8346f2283ede7.jpg",
 ];
 
@@ -27,7 +26,7 @@ class HomePageState extends StatefulWidget {
   const HomePageState({Key? key}) : super(key: key);
 
   @override
-  _HomePageStateState createState() => _HomePageStateState();
+  State<HomePageState> createState() => _HomePageStateState();
 }
 
 class _HomePageStateState extends State<HomePageState> {
@@ -47,7 +46,7 @@ class _HomePageStateState extends State<HomePageState> {
   GlobalKey _bottomNavigationKey = GlobalKey();
 
   int currentIndex = 0;
-  final screens= <Widget>[const HomePage(), const ZetaFashion()];
+  final screens= <Widget>[const HomePage(), const ZetaFashionState()];
 
   // ignore: constant_identifier_names
   static const List<Widget> _Items = <Widget>[

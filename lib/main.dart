@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:zeta_fashion_application/LoginPage.dart';
 import 'package:zeta_fashion_application/admin_homepage.dart';
@@ -9,8 +9,9 @@ import 'package:zeta_fashion_application/productScreen.dart';
 import 'package:zeta_fashion_application/wallet.dart';
 
 
-void main() {
-
+Future<void> main() async{
+WidgetsFlutterBinding.ensureInitialized();
+await Firebase.initializeApp();
   runApp(const MaterialApp(
       home: NavState(),
   ),
@@ -22,7 +23,7 @@ class NavState extends StatefulWidget {
   const NavState({Key? key}) : super(key: key);
 
   @override
-  _NavStateState createState() => _NavStateState();
+  State <NavState> createState() => _NavStateState();
 }
 
 class _NavStateState extends State<NavState> {
