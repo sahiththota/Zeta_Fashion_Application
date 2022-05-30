@@ -1,15 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:zeta_fashion_application/LoginPage.dart';
-import 'package:zeta_fashion_application/checkout_screen.dart';
 import 'package:zeta_fashion_application/product_list.dart';
-import 'package:page_transition/page_transition.dart';
-import 'UserModel/usermodel.dart';
-import 'package:zeta_fashion_application/store_locator.dart';
-
 
 final List<String> imgList = [
   "https://www.shopickr.com/wp-content/uploads/2016/04/snapdeal-mens-fashion-sale-2016.jpg",
@@ -36,59 +29,83 @@ class HomePageState extends StatefulWidget {
 }
 
 class _HomePageStateState extends State<HomePageState> {
-  // final List<Map> categories = [
-  //   {"name": "Men", "iconPath": "assets/men.jpg", "value" : "Men"},
-  //   {"name": "Women", "iconPath": "assets/menShirt1.jpg","value" : "Women"},
-  //   {"name": "Accessories", "iconPath": "assets/men.jpg","value" : "Accessories"},
-  //   {"name": "Kids", "iconPath": "assets/menShirt1.jpg","value" : "Kids"},
-  //   {"name": "Women Sport", "iconPath": "assets/men.jpg","value" : "WomenS"},
-  //   {"name": "Men Sport", "iconPath": "assets/menShirt1.jpg","value" : "MenS"},
-  // ];
+  int activeTab = 0;
+  final List<Map> categories = [
+    {"name": "Men", "iconPath": "assets/men.jpg", "value": "Men"},
+    {"name": "Women", "iconPath": "assets/menShirt1.jpg", "value": "Women"},
+    {
+      "name": "Accessories",
+      "iconPath": "assets/men.jpg",
+      "value": "Accessories"
+    },
+    {"name": "Kids", "iconPath": "assets/menShirt1.jpg", "value": "Kids"},
+    {"name": "Women Sport", "iconPath": "assets/men.jpg", "value": "WomenS"},
+    {"name": "Men Sport", "iconPath": "assets/menShirt1.jpg", "value": "MenS"},
+  ];
+
+  int _page = 0;
+  GlobalKey _bottomNavigationKey = GlobalKey();
+
+  int currentIndex = 0;
+  final screens = <Widget>[const HomePage(), const ZetaFashionState()];
+
+  // ignore: constant_identifier_names
+  static const List<Widget> _Items = <Widget>[
+    Icon(
+      Icons.home,
+      size: 30,
+    ),
+    Icon(
+      Icons.favorite,
+      size: 30,
+    ),
+    Icon(
+      Icons.shopping_cart,
+      size: 30,
+    ),
+    Icon(
+      Icons.person,
+      size: 30,
+    ),
+  ];
 
   final List<Widget> imageSliders = imgList
       .map((item) => Container(
-    margin: const EdgeInsets.all(5.0),
-    child: ClipRRect(
-        borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-        child: Stack(
-          children: <Widget>[
-            Image.network(item, fit: BoxFit.fill, width: 1000.0),
-            Positioned(
-              bottom: 0.0,
-              left: 0.0,
-              right: 0.0,
-              child: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color.fromARGB(200, 0, 0, 0),
-                      Color.fromARGB(0, 0, 0, 0)
-                    ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                  ),
-                ),
-                padding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 20.0),
-              ),
-            ),
-          ],
-        )),
-  ))
+            margin: const EdgeInsets.all(5.0),
+            child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+                child: Stack(
+                  children: <Widget>[
+                    Image.network(item, fit: BoxFit.fill, width: 1000.0),
+                    Positioned(
+                      bottom: 0.0,
+                      left: 0.0,
+                      right: 0.0,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Color.fromARGB(200, 0, 0, 0),
+                              Color.fromARGB(0, 0, 0, 0)
+                            ],
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 20.0),
+                      ),
+                    ),
+                  ],
+                )),
+          ))
       .toList();
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
-
-  final Stream<QuerySnapshot> category =
-  FirebaseFirestore.instance.collection("category").snapshots();
-
-  signOut() async{
-    await _auth.signOut();
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black38,
+
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: true,
@@ -97,19 +114,13 @@ class _HomePageStateState extends State<HomePageState> {
           style: TextStyle(
               fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.pin_drop_rounded,
-            color: Colors.white,
-          ), onPressed: () {
-            Navigator.push(context,MaterialPageRoute(builder: (context) => StoreLocator()));
-        },
 
-        ),
+        // Image.asset(
+        //   'assets/zeta.jpg' ,
+        //   scale: 8,
+        // ),
         automaticallyImplyLeading: false,
         actions: <Widget>[
-
-
           IconButton(
             onPressed: () => {
               _showToast(context),
@@ -119,191 +130,152 @@ class _HomePageStateState extends State<HomePageState> {
               color: Colors.white,
             ),
           ),
-
-          IconButton(
-            onPressed: () => {
-              Navigator.push(
-                  context,
-                 MaterialPageRoute(builder: (context) => CheckoutScreen()))
-            },
-            icon: const Icon(
-              Icons.shopping_cart,
-              color: Colors.white,
-            ),
-          ),
-
-          IconButton(
-            onPressed: () => {
-              signOut(),
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginState()))
-            },
-            icon: const Icon(
-              Icons.logout,
-              color: Colors.white,
-            ),
-          ),
         ],
       ),
 
-      // body: ,
       body: SingleChildScrollView(
-        child: Column(children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(25),
-            child: Flexible(
-              flex: 1,
-              child: TextField(
-                cursorColor: Colors.grey,
-                decoration: InputDecoration(
-                  fillColor: Colors.white,
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide.none,
-                  ),
-                  hintText: "Search products",
-                  hintStyle: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                  ),
-                  prefixIcon: const Icon(
-                    Icons.search,
-                    color: Colors.black,
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(25),
+                  child: Flexible(
+                    flex: 1,
+                    child: TextField(
+                      cursorColor: Colors.grey,
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide.none,
+                        ),
+                        hintText: "Search products",
+                        hintStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                        ),
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          CarouselSlider(
-            options: CarouselOptions(
-              aspectRatio: 2.0,
-              enlargeCenterPage: true,
-              enableInfiniteScroll: false,
-              initialPage: 0,
-              autoPlay: true,
-            ),
-            items: imageSliders,
-          ),
-          const SizedBox(
-            height: 2,
-          ),
-          const Text(
-            "CATEGORIES",
-            style: TextStyle(
-              fontSize: 25,
-              color: Colors.white,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            color: Colors.black,
-            height: 150,
-            child: StreamBuilder<QuerySnapshot>(
-              stream: category,
-              builder: (
-                  BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshots,
-                  ) {
-                if (snapshots.hasError) {
-                  return const Text("Snapshots error");
-                } else if (snapshots.connectionState ==
-                    ConnectionState.waiting) {
-                  return const Text("Data Loading");
-                }
-
-                final data = snapshots.requireData;
-
-                return ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: data.size,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                        onTap: () => {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ProductListState(
-                                  categoryId: data.docs[index].id,
-                                  categoryName:data.docs[index]["name"]),
-                            ),
-                          )
-                        },
-                        child: Column(
+                const SizedBox(
+                  height: 5,
+                ),
+                CarouselSlider(
+                  options: CarouselOptions(
+                    aspectRatio: 2.0,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: false,
+                    initialPage: 0,
+                    autoPlay: true,
+                  ),
+                  items: imageSliders,
+                ),
+                const SizedBox(
+                  height: 2,
+                ),
+                SingleChildScrollView(
+                  child: Column(
+                    children: const <Widget>[
+                      Text(
+                        "CATEGORIES",
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  color: Colors.black,
+                  height: 150,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: categories.length,
+                      itemBuilder: (context, index) {
+                        return Column(
                           children: [
-                            Expanded(
-                              child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 0, horizontal: 40),
-                                  margin: const EdgeInsets.only(
-                                      left: 5, top: 25, bottom: 15, right: 20),
-                                  decoration: BoxDecoration(
-                                      color: Colors.green,
-                                      borderRadius: BorderRadius.circular(50),
-                                      image: DecorationImage(
-                                        image: NetworkImage(
-                                            data.docs[index]["imageUrl"],
-                                            scale: 2),
-                                        fit: BoxFit.cover,
-                                      ))),
+                            Container(
+                              padding: const EdgeInsets.all(10.0),
+                              margin: const EdgeInsets.only(left: 20, top: 15),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              child: InkWell(
+                                onTap: () => {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => MenFashion()))
+                                },
+                                child: Image.asset(
+                                  categories[index]["value"]['iconPath'],
+                                  height: 50,
+                                  width: 50,
+                                ),
+                              ),
                             ),
-                            const SizedBox(
-                              height: 2,
-                            ),
-                            Text(
-                              data.docs[index]["name"].toUpperCase(),
-                              style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),
-                            )
+                            const SizedBox(height: 10),
+                            Container(
+                                padding: const EdgeInsets.fromLTRB(
+                                    26.0, 0.0, 2.0, 0.0),
+                                child: Text(
+                                  categories[index]['name'],
+                                  style: const TextStyle(color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                )),
                           ],
-                        ));
-                  },
-                );
-              },
+                        );
+                      }),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: 200,
+                    aspectRatio: 2.0,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: true,
+                    initialPage: 1,
+                    autoPlay: true,
+                  ),
+                  items: imageSliders,
+                ),
+              ],
             ),
-            // const SizedBox(height: 10),
-            // Container(
-            //
-            //     child: Text(
-            //       getData[index]['name'],
-            //       style: const TextStyle(color: Colors.white),
-            //       textAlign: TextAlign.center,
-            //     )
-            // ),
-          ),
-          const SizedBox(height: 50),
-          CarouselSlider(
-            options: CarouselOptions(
-              aspectRatio: 2.0,
-              enlargeCenterPage: true,
-              enableInfiniteScroll: false,
-              initialPage: 0,
-              autoPlay: true,
-            ),
-            items: imageSliders,
-          ),
-        ]),
+          ],
+        ),
       ),
-    );
-  }
-}
 
-class FireStorageService extends ChangeNotifier {
-  FireStorageService();
-  static Future<dynamic> loadImage(
-      BuildContext context, String imageUrl) async {
-    return await FirebaseStorage.instance
-        .ref()
-        .child("category")
-        .getDownloadURL();
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 50,
+        key: _bottomNavigationKey,
+        index: currentIndex,
+        items: _Items,
+        buttonBackgroundColor: Colors.red,
+        backgroundColor: Colors.white,
+        onTap: (index) {
+          setState(() {
+            _page = index;
+          });
+        },
+      ),
+
+      // body: HomePageState(),
+    );
   }
 }
 

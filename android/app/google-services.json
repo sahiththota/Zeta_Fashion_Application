@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "130218565003",
+    "firebase_url": "https://zetafashion-flutter-default-rtdb.firebaseio.com",
     "project_id": "zetafashion-flutter",
     "storage_bucket": "zetafashion-flutter.appspot.com"
   },
