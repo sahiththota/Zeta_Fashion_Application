@@ -57,6 +57,7 @@ class _CheckoutScreenState extends State<CheckoutScreenState> {
         actions:  [
           Align(
               alignment: Alignment.center,
+              // ignore: deprecated_member_use
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: Colors.orangeAccent,
@@ -234,13 +235,13 @@ class _CheckoutScreenState extends State<CheckoutScreenState> {
 
   void openCheckout() async {
     var options = {
-      'key': 'rzp_test_af1nF582582Awr',
+      'key': 'rzp_live_ILgsfZCZoFIKMb',
       'amount': 100,
-      'name': 'Zeta Fashion',
+      'name': 'Acme Corp.',
       'description': 'Fine T-Shirt',
       'retry': {'enabled': true, 'max_count': 1},
       'send_sms_hash': true,
-      'prefill': {'contact': '5148141234', 'email': 'madhurimedida@gmail.com'},
+      'prefill': {'contact': '8888888888', 'email': 'test@razorpay.com'},
       'external': {
         'wallets': ['paytm']
       }

@@ -6,11 +6,11 @@ import 'productScreen.dart';
 
 
 class MenFashion extends StatelessWidget {
-   MenFashion({Key? key}) : super(key: key);
+   const MenFashion({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return  const MaterialApp(
       home: MenFashionState(),
       debugShowCheckedModeBanner: false,
     );
@@ -18,7 +18,7 @@ class MenFashion extends StatelessWidget {
 }
 
 class MenFashionState extends StatefulWidget {
-   MenFashionState({Key? key}) : super(key: key);
+   const MenFashionState({Key? key}) : super(key: key);
 
   @override
   State <MenFashionState> createState() => _MenFashionStateState();
@@ -26,7 +26,7 @@ class MenFashionState extends StatefulWidget {
 
 class _MenFashionStateState extends State<MenFashionState> {
 
-  // ignore: non_ant_identifier_names
+  // ignore: non_ant_identifier_names, non_constant_identifier_names
   final List<Map> ImageList = [
     {"name": "Product 1", "description" : "Made by @", "iconPath": "https://static.fibre2fashion.com/articleresources/images/81/8092/mens-fashion_big_Big.jpg",},
     {"name": "Product 2", "description" : "Made by @","iconPath": "https://static.wixstatic.com/media/4c2e0b5374204d6ca536142df349729f.jpg/v1/fill/w_1880,h_1040,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Male%20fashion%20model.jpg"},
@@ -41,8 +41,8 @@ class _MenFashionStateState extends State<MenFashionState> {
   ];
 
 
-  Icon customIcon =  Icon(Icons.search);
-  Widget customSearchBar =  Text("Mens Fashion");
+  Icon customIcon =  const Icon(Icons.search);
+  Widget customSearchBar =  const Text("Men's Fashion");
   @override
   Widget build(BuildContext context) {
 
@@ -54,12 +54,12 @@ class _MenFashionStateState extends State<MenFashionState> {
         title: customSearchBar,
         centerTitle: true,
         leading: IconButton(
-          icon:  Icon(
+          icon:  const Icon(
           Icons.arrow_back,
           ), onPressed: ()=>
         {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) =>  HomePage()))
+              MaterialPageRoute(builder: (context) =>  const HomePage()))
         },
         ),
         actions: <Widget>[
@@ -67,8 +67,8 @@ class _MenFashionStateState extends State<MenFashionState> {
               onPressed: () =>{
                 setState((){
                   if(customIcon.icon == Icons.search){
-                    customIcon =  Icon(Icons.cancel);
-                    customSearchBar =  TextField(
+                    customIcon =  const Icon(Icons.cancel);
+                    customSearchBar =  const TextField(
                       textInputAction: TextInputAction.go,
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -83,15 +83,15 @@ class _MenFashionStateState extends State<MenFashionState> {
                     );
                   }
                   else{
-                    customIcon = Icon(Icons.search);
-                    customSearchBar = Text("Mens Fashions");
+                    customIcon = const Icon(Icons.search);
+                    customSearchBar = const Text("Men's Fashions");
                   }
                 })
               },
               icon: customIcon,
           ),
           IconButton(onPressed: () => {
-          }, icon:  Icon(
+          }, icon:  const Icon(
             Icons.filter_alt_outlined,
             size: 25,
           ),)
@@ -105,11 +105,11 @@ class _MenFashionStateState extends State<MenFashionState> {
             children: <Widget>[
 
               GridView.builder(
-                physics:  ClampingScrollPhysics(),
+                physics:  const ClampingScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 itemCount: ImageList.length,
-                gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount(
                   childAspectRatio: 1,
                   crossAxisCount: 2,
                   crossAxisSpacing: 4.0,
@@ -134,24 +134,24 @@ class _MenFashionStateState extends State<MenFashionState> {
                             InkWell(
                               onTap: () => {
                                 Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) =>   ProductScreen()))
+                                    MaterialPageRoute(builder: (context) =>   const ProductScreen()))
                               },
                               child: Padding(
-                                padding:  EdgeInsets.all(15),
+                                padding:  const EdgeInsets.all(15),
                                 child: Image.network(
                                   ImageList[index]['iconPath'],
                                   fit: BoxFit.cover,
                                   alignment: Alignment.center,
-                                  height: 120,
+                                  height: 100,
                                   width: double.infinity,
                                 ),
                               ),
                             ),
-                             SizedBox(height: 5),
+                             const SizedBox(height: 2),
                             Text(
                               ImageList[index]["name"],
                               textAlign: TextAlign.center,
-                              style:  TextStyle(
+                              style:  const TextStyle(
                                   fontSize: 20,
                                   color: Colors.black),
                             )
@@ -165,7 +165,7 @@ class _MenFashionStateState extends State<MenFashionState> {
               ),
 
 
-              SizedBox(height: 20,)
+              const SizedBox(height: 20,)
             ]),
 
         ),

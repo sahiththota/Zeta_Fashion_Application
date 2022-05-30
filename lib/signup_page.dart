@@ -19,20 +19,16 @@ class SignUppage extends StatefulWidget {
   const SignUppage({Key? key}) : super(key: key);
 
   @override
-  State <SignUppage> createState() => _SignUppageState();
+  State<SignUppage> createState() => _SignUppageState();
 }
 
 class _SignUppageState extends State<SignUppage> {
-
-
-
   final nameC = TextEditingController();
   final phoneC = TextEditingController();
   final emailC = TextEditingController();
   final passwordC = TextEditingController();
 
   final controller = TextEditingController();
-
 
   String? get pwdValidator {
     final text = controller.value.text;
@@ -52,147 +48,146 @@ class _SignUppageState extends State<SignUppage> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text("Sign Up", style: TextStyle(
-            fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white),),
+        title: const Text(
+          "Sign Up",
+          style: TextStyle(
+              fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white),
+        ),
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-          ), onPressed: () =>
-        {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ZetaFashionState()))
-        },
-
+          ),
+          onPressed: () => {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ZetaFashionState()))
+          },
         ),
       ),
-
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(30.0),
-          child: Column(
-              children: [
-                TextFormField(
-                  controller: nameC,
-                    onSaved: (value){
-                    nameC.text = value!;
-                    },
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                        enabledBorder: const OutlineInputBorder(
-                          // width: 0.0 produces a thin "hairline" border
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        labelText: "Full Name",
-                        labelStyle: const TextStyle(color: Colors.white),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ))
-                ),
-                const SizedBox(height: 30,),
-
-
-                TextFormField(
-                  controller: phoneC,
-                    onSaved: (value){
-                    phoneC.text = value!;
-                    },
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                        enabledBorder: const OutlineInputBorder(
-                          // width: 0.0 produces a thin "hairline" border
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        labelText: "Contact Information",
-                        labelStyle: const TextStyle(color: Colors.white),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ))
-                ),
-                const SizedBox(height: 30,),
-
-                TextFormField(
-                  controller: emailC,
-                    onSaved: (value){
-                      emailC.text = value!;
-                    },
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                        enabledBorder: const OutlineInputBorder(
-                          // width: 0.0 produces a thin "hairline" border
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        labelText: "Email Id",
-                        labelStyle: const TextStyle(color: Colors.white),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ))
-                ),
-                const SizedBox(height: 30,),
-
-                TextFormField(
-
-                  controller: passwordC,
-                    onSaved: (value){
-                      passwordC.text = value!;
-                    },
-                    style: const TextStyle(color: Colors.white),
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        errorText: pwdValidator,
-                        errorStyle: const TextStyle(color: Colors.white),
-                        enabledBorder: const OutlineInputBorder(
-                          // width: 0.0 produces a thin "hairline" border
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        labelText: "Password",
-                        labelStyle: const TextStyle(color: Colors.white),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ))
-                ),
-                const SizedBox(height: 50,),
-
-
-                ElevatedButton(
-                  onPressed: () {
-                    // ignore: avoid_print
-                    print(nameC.text + phoneC.text);
-                    if (nameC.text.isNotEmpty   && phoneC.text.isNotEmpty &&
-                        emailC.text.isNotEmpty && passwordC.text.isNotEmpty) {
-                      InsertData(
-                          nameC.text, phoneC.text, emailC.text, passwordC.text);
-
-                    }
-                    else{
-                      // ignore: avoid_print
-                      print("No data entered");
-                    }
-
-                  },
-                  style: ElevatedButton.styleFrom(primary: const Color(0xFFEFD47E)),
-                  // color: Color(0xFFEFD47E),
-                  child: const Text(
-                    "Sign Up",
-                    style: TextStyle(
-                      color: Colors.black,
-                      letterSpacing: 1.0,
-                      fontSize: 20,
-
+          child: Column(children: [
+            TextFormField(
+                controller: nameC,
+                onSaved: (value) {
+                  nameC.text = value!;
+                },
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      // width: 0.0 produces a thin "hairline" border
+                      borderSide: BorderSide(color: Colors.white),
                     ),
-                  ),
+                    labelText: "Full Name",
+                    labelStyle: const TextStyle(color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ))),
+            const SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+                controller: phoneC,
+                onSaved: (value) {
+                  phoneC.text = value!;
+                },
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      // width: 0.0 produces a thin "hairline" border
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    labelText: "Contact Information",
+                    labelStyle: const TextStyle(color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ))),
+            const SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+                controller: emailC,
+                onSaved: (value) {
+                  emailC.text = value!;
+                },
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      // width: 0.0 produces a thin "hairline" border
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    labelText: "Email Id",
+                    labelStyle: const TextStyle(color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ))),
+            const SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+                controller: passwordC,
+                onSaved: (value) {
+                  passwordC.text = value!;
+                },
+                style: const TextStyle(color: Colors.white),
+                obscureText: true,
+                decoration: InputDecoration(
+                    errorText: pwdValidator,
+                    errorStyle: const TextStyle(color: Colors.white),
+                    enabledBorder: const OutlineInputBorder(
+                      // width: 0.0 produces a thin "hairline" border
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    labelText: "Password",
+                    labelStyle: const TextStyle(color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ))),
+            const SizedBox(
+              height: 50,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // ignore: avoid_print
+                print(nameC.text + phoneC.text);
+                if (nameC.text.isNotEmpty &&
+                    phoneC.text.isNotEmpty &&
+                    emailC.text.isNotEmpty &&
+                    passwordC.text.isNotEmpty) {
+                  InsertData(
+                      nameC.text, phoneC.text, emailC.text, passwordC.text);
+                } else {
+                  // ignore: avoid_print
+                  print("No data entered");
+                }
+              },
+              style: ElevatedButton.styleFrom(primary: const Color(0xFFEFD47E)),
+              // color: Color(0xFFEFD47E),
+              child: const Text(
+                "Sign Up",
+                style: TextStyle(
+                  color: Colors.black,
+                  letterSpacing: 1.0,
+                  fontSize: 20,
                 ),
-
-              ]),
-
+              ),
+            ),
+          ]),
         ),
       ),
     );
   }
 
   // ignore: non_constant_identifier_names
-  void InsertData(String name, String phoneNumber, String email,
-      String password,) async {
+  void InsertData(
+    String name,
+    String phoneNumber,
+    String email,
+    String password,
+  ) async {
     // String? key = databaseReference.child(phoneNumber).child("ListRegister").push().key;
     // databaseReference.child("Users").child(phoneNumber).child(key!).set({
     //   "Full Name": name,
@@ -205,28 +200,23 @@ class _SignUppageState extends State<SignUppage> {
     // emailC.clear();
     // passwordC.clear();
 
+    await _auth
+        .createUserWithEmailAndPassword(email: email, password: password)
+        .then((value) => {
+              postDetailstoFirestore(),
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LoginState()))
+            })
+        .catchError((e) {
+      _showToast(context);
+    });
+  }
 
-
-
-      await _auth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) =>
-      {
-        postDetailstoFirestore(),
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginState()))
-      }).catchError((e){
-          _showToast(context);
-      });
-    }
-
-
-
-  postDetailstoFirestore() async{
+  postDetailstoFirestore() async {
     FirebaseFirestore firebaseFireStore = FirebaseFirestore.instance;
     User? user = _auth.currentUser;
 
     UserModel userModel = UserModel();
-
 
     userModel.fullName = nameC.text;
     userModel.email = user!.email;
@@ -234,29 +224,22 @@ class _SignUppageState extends State<SignUppage> {
     userModel.uid = user.uid;
     userModel.password = passwordC.text;
 
-
     await firebaseFireStore
-    .collection("users")
-    .doc(user.uid)
-    .set(userModel.toMap());
+        .collection("users")
+        .doc(user.uid)
+        .set(userModel.toMap());
     // ignore: avoid_print
     print("Account created");
 
-
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginState()));
-
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const LoginState()));
   }
-
-
-
-
-
 
   // ignore: unused_element
   void _showToast(BuildContext context, {msg}) {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-
-      content: Text("Enter the required information",
+      content: Text(
+        "Enter the required information",
         style: TextStyle(fontSize: 20, color: Colors.black),
         textAlign: TextAlign.center,
       ),
@@ -267,5 +250,3 @@ class _SignUppageState extends State<SignUppage> {
     ));
   }
 }
-
-

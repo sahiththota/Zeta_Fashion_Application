@@ -8,22 +8,21 @@ import 'package:zeta_fashion_application/product_list.dart';
 import 'package:zeta_fashion_application/productScreen.dart';
 import 'package:zeta_fashion_application/wallet.dart';
 
-
-Future<void> main() async{
-WidgetsFlutterBinding.ensureInitialized();
-await Firebase.initializeApp();
-  runApp(const MaterialApp(
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(
+    const MaterialApp(
       home: NavState(),
-  ),
+    ),
   );
 }
-
 
 class NavState extends StatefulWidget {
   const NavState({Key? key}) : super(key: key);
 
   @override
-  State <NavState> createState() => _NavStateState();
+  State<NavState> createState() => _NavStateState();
 }
 
 class _NavStateState extends State<NavState> {
@@ -34,14 +33,13 @@ class _NavStateState extends State<NavState> {
       routes: {
         '/main_layout': (context) => const LoginState(),
         '/page1': (context) => const HomePage(),
-        '/page2': (context) =>  MenFashion(),
+        '/page2': (context) => MenFashion(),
         '/page3': (context) => const Wallet(),
         '/page4': (context) => const CheckoutScreen(),
-        '/page5': (context) =>  ProductScreen(),
+        '/page5': (context) => ProductScreen(),
         '/page6': (context) => const AdminPage(),
-
       },
-      initialRoute: '/main_layout',
+      initialRoute: '/page1',
     );
   }
 }
