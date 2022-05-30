@@ -10,9 +10,7 @@ export 'package:zeta_fashion_application/main.dart';
 
 import 'package:zeta_fashion_application/main.dart' as entrypoint;
 import 'dart:io'; // flutter_ignore: dart_io_import.
-import 'package:geolocator_android/geolocator_android.dart';
 import 'package:url_launcher_android/url_launcher_android.dart';
-import 'package:geolocator_apple/geolocator_apple.dart';
 import 'package:url_launcher_ios/url_launcher_ios.dart';
 import 'package:share_plus_linux/share_plus_linux.dart';
 import 'package:url_launcher_linux/url_launcher_linux.dart';
@@ -27,16 +25,6 @@ class _PluginRegistrant {
   static void register() {
     if (Platform.isAndroid) {
       try {
-        GeolocatorAndroid.registerWith();
-      } catch (err) {
-        print(
-          '`geolocator_android` threw an error: $err. '
-          'The app may not function as expected until you remove this plugin from pubspec.yaml'
-        );
-        rethrow;
-      }
-
-      try {
         UrlLauncherAndroid.registerWith();
       } catch (err) {
         print(
@@ -47,16 +35,6 @@ class _PluginRegistrant {
       }
 
     } else if (Platform.isIOS) {
-      try {
-        GeolocatorApple.registerWith();
-      } catch (err) {
-        print(
-          '`geolocator_apple` threw an error: $err. '
-          'The app may not function as expected until you remove this plugin from pubspec.yaml'
-        );
-        rethrow;
-      }
-
       try {
         UrlLauncherIOS.registerWith();
       } catch (err) {

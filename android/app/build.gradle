@@ -47,6 +47,7 @@ android {
         applicationId "com.example.zeta_fashion_application"
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
@@ -68,4 +69,6 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation platform('com.google.firebase:firebase-bom:29.3.1')
+    implementation("com.android.support:multidex:1.0.3")
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
 }

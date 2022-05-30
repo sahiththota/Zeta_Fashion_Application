@@ -1,0 +1,78 @@
+{
+  "Men": [
+    {
+      "id": 1,
+      "name": "Black shirt",
+      "description": "Designed by POLO fashion club",
+      "price": 20,
+      "type": "Men",
+      "url": "https://i5.walmartimages.ca/images/Thumbnails/163/460/6000202163460.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Black shirt",
+      "description": "Designed by POLO fashion club",
+      "price": 20,
+      "type": "Men",
+      "url": "https://i5.walmartimages.ca/images/Thumbnails/163/460/6000202163460.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Black shirt",
+      "description": "Designed by POLO fashion club",
+      "price": 20,
+      "type": "Men",
+      "url": "https://i5.walmartimages.ca/images/Thumbnails/163/460/6000202163460.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Black shirt",
+      "description": "Designed by POLO fashion club",
+      "price": 20,
+      "type": "Men",
+      "url": "https://i5.walmartimages.ca/images/Thumbnails/163/460/6000202163460.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Black shirt",
+      "description": "Designed by POLO fashion club",
+      "price": 20,
+      "type": "Men",
+      "url": "https://i5.walmartimages.ca/images/Thumbnails/163/460/6000202163460.jpg"
+    }
+  ],
+  "Women": [
+    {
+      "id": 1,
+      "name": "Black shirt",
+      "description": "Designed by POLO fashion club",
+      "price": 20,
+      "type": "Men",
+      "url": "https://i5.walmartimages.ca/images/Thumbnails/163/460/6000202163460.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Black shirt",
+      "description": "Designed by POLO fashion club",
+      "price": 20,
+      "type": "Men",
+      "url": "https://i5.walmartimages.ca/images/Thumbnails/163/460/6000202163460.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Black shirt",
+      "description": "Designed by POLO fashion club",
+      "price": 20,
+      "type": "Men",
+      "url": "https://i5.walmartimages.ca/images/Thumbnails/163/460/6000202163460.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Black shirt",
+      "description": "Designed by POLO fashion club",
+      "price": 20,
+      "type": "Men",
+      "url": "https://i5.walmartimages.ca/images/Thumbnails/163/460/6000202163460.jpg"
+    }
+  ]
+}

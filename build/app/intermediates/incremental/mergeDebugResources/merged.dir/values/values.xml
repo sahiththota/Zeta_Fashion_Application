@@ -138,6 +138,7 @@
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="default_web_client_id" translatable="false">130218565003-nlueidourj02cr3cg6fmk8hd9m68c2ro.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://zetafashion-flutter-default-rtdb.firebaseio.com</string>
     <string name="gcm_defaultSenderId" translatable="false">130218565003</string>
     <string name="google_api_key" translatable="false">AIzaSyAxOZM8mTmaGMFFw2cmoX1PLLIai9OakfQ</string>
     <string name="google_app_id" translatable="false">1:130218565003:android:a9848aeb935acc48e8a38e</string>

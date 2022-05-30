@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "130218565003",
+    "project_id": "zetafashion-flutter",
+    "storage_bucket": "zetafashion-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130218565003:android:a9848aeb935acc48e8a38e",
+        "android_client_info": {
+          "package_name": "com.example.zeta_fashion_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130218565003-nlueidourj02cr3cg6fmk8hd9m68c2ro.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxOZM8mTmaGMFFw2cmoX1PLLIai9OakfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130218565003-nlueidourj02cr3cg6fmk8hd9m68c2ro.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

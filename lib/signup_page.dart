@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:zeta_fashion_application/LoginPage.dart';
 import 'package:zeta_fashion_application/UserModel/usermodel.dart';
+import 'package:zeta_fashion_application/bottomNavigator.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -55,17 +56,8 @@ class _SignUppageState extends State<SignUppage> {
         title: const Text("Sign Up", style: TextStyle(
             fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white),),
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-          ), onPressed: () =>
-        {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ZetaFashionState()))
-        },
-
+        automaticallyImplyLeading: true,
         ),
-      ),
 
       body: SingleChildScrollView(
         child: Padding(
@@ -73,9 +65,9 @@ class _SignUppageState extends State<SignUppage> {
           child: Column(
               children: [
                 TextFormField(
-                  controller: nameC,
+                    controller: nameC,
                     onSaved: (value){
-                    nameC.text = value!;
+                      nameC.text = value!;
                     },
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
@@ -93,9 +85,9 @@ class _SignUppageState extends State<SignUppage> {
 
 
                 TextFormField(
-                  controller: phoneC,
+                    controller: phoneC,
                     onSaved: (value){
-                    phoneC.text = value!;
+                      phoneC.text = value!;
                     },
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
@@ -112,7 +104,7 @@ class _SignUppageState extends State<SignUppage> {
                 const SizedBox(height: 30,),
 
                 TextFormField(
-                  controller: emailC,
+                    controller: emailC,
                     onSaved: (value){
                       emailC.text = value!;
                     },
@@ -132,7 +124,7 @@ class _SignUppageState extends State<SignUppage> {
 
                 TextFormField(
 
-                  controller: passwordC,
+                    controller: passwordC,
                     onSaved: (value){
                       passwordC.text = value!;
                     },
@@ -208,16 +200,16 @@ class _SignUppageState extends State<SignUppage> {
 
 
 
-      await _auth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) =>
-      {
-        postDetailstoFirestore(),
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginState()))
-      }).catchError((e){
-          _showToast(context);
-      });
-    }
+    await _auth
+        .createUserWithEmailAndPassword(email: email, password: password)
+        .then((value) =>
+    {
+      postDetailstoFirestore(),
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginState()))
+    }).catchError((e){
+      _showToast(context);
+    });
+  }
 
 
 
@@ -236,9 +228,9 @@ class _SignUppageState extends State<SignUppage> {
 
 
     await firebaseFireStore
-    .collection("users")
-    .doc(user.uid)
-    .set(userModel.toMap());
+        .collection("users")
+        .doc(user.uid)
+        .set(userModel.toMap());
     // ignore: avoid_print
     print("Account created");
 
