@@ -40,11 +40,11 @@ class _AdminScreenState extends State<AdminScreenState> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text("Admin Screen" , style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),),
+        title: const Text("Admin Screen" , style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-            onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context) => ZetaFashionState()))},
+            onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context) => const ZetaFashionState()))},
             icon: const Icon(
               Icons.login_outlined,
               color: Colors.white,
@@ -53,7 +53,7 @@ class _AdminScreenState extends State<AdminScreenState> {
 
         ],
       ),
-      drawer: Drawer(
+      drawer: const Drawer(
 
       ),
 
@@ -67,33 +67,33 @@ class _AdminScreenState extends State<AdminScreenState> {
                 child:ElevatedButton(
                     onPressed: (){},
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFEFD47E),
+                      primary: const Color(0xFFEFD47E),
                       elevation: 3,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0),),
-                      minimumSize: Size(200, 70),
+                      minimumSize: const Size(200, 70),
                     ),
-                    child: Text("Add Products", style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),)),
+                    child: const Text("Add Products", style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),)),
               ),
               Center(
                 child:ElevatedButton(
                     onPressed: (){},
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFEFD47E),
+                      primary: const Color(0xFFEFD47E),
                       elevation: 3,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-                      minimumSize: Size(200, 70),
+                      minimumSize: const Size(200, 70),
                     ),
-                    child: Text("Edit Products", style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),)),
+                    child: const Text("Edit Products", style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),)),
               ),
               Center(
                 child:ElevatedButton(
                     onPressed: (){},
                     style: ElevatedButton.styleFrom(
-                  primary: Color(0xFFEFD47E),
+                  primary: const Color(0xFFEFD47E),
                   elevation: 3,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-                  minimumSize: Size(200, 70),
-                ),child: Text("Remove Products", style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),)),
+                  minimumSize: const Size(200, 70),
+                ),child: const Text("Remove Products", style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),)),
               )
             ],
           )
